@@ -15,7 +15,7 @@
 /* Aurora Background */
 .aurora-bg {
     @apply relative min-h-screen overflow-hidden bg-[#0B1026];
-    background-image: url('/images/aurora.jpg');
+    background-image: url('/public/images/heart-of-universe.jpg');
     background-size: cover;
     background-position: center;
 }

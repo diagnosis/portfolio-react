@@ -8,7 +8,7 @@ function Index() {
     return (
         <section className="aurora-bg -mt-[64px]">
             <div className='px-4 mx-auto flex max-w-screen-xl flex-wrap items-center min-h-screen'>
-                <div className="mx-auto flex flex-col items-left relative z-10 bg-black/30 backdrop-blur-sm p-8 rounded-lg border border-teal-500/20">
+                <div className="flex flex-col items-left relative z-10 bg-black/30 backdrop-blur-sm p-8 rounded-lg border border-teal-500/20">
                     <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-teal-100 animate-slide-up">
                         I am,
                     </p>
