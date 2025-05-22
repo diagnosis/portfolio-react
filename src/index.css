@@ -12,17 +12,12 @@
     --text-color: #1f2937;
 }
 
-.home-bg {
-    @apply bg-purple-100 bg-[url('/images/background.png')] bg-cover bg-center min-h-screen relative overflow-hidden;
-}
-
-.skills-bg {
-    @apply bg-gray-100 bg-[url('/images/skills.jpg')] bg-cover bg-center min-h-screen relative overflow-hidden;
-}
-
 /* Aurora Background */
 .aurora-bg {
     @apply relative min-h-screen overflow-hidden bg-[#0B1026];
+    background-image: url('https://images.unsplash.com/photo-1593378026483-6c06ab06fc3e?q=80&w=2340&fit=crop');
+    background-size: cover;
+    background-position: center;
 }
 
 .aurora-bg::before {
@@ -33,9 +28,9 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 60% 20%, rgba(60, 8, 118, 0.4) 0%, transparent 40%),
-        radial-gradient(circle at 40% 40%, rgba(16, 128, 208, 0.4) 0%, transparent 40%),
-        radial-gradient(circle at 30% 60%, rgba(64, 184, 83, 0.4) 0%, transparent 40%);
+        radial-gradient(circle at 60% 20%, rgba(20, 184, 166, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 40% 40%, rgba(45, 212, 191, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 30% 60%, rgba(94, 234, 212, 0.3) 0%, transparent 40%);
     animation: auroraFlow 15s ease-in-out infinite;
     z-index: 1;
 }
