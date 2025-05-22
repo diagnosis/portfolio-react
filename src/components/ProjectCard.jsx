@@ -42,7 +42,13 @@ export const ProjectCard = ({ project }) => {
 
             {isModalOpen && (
                 <Modal>
-                    <div className="space-y-4 text-white">
+                    <div className="relative space-y-4 text-white">
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute -top-2 -right-2 w-8 h-8 flex items-center justify-center rounded-full bg-teal-500/20 text-teal-100 hover:bg-teal-500/30 transition-colors duration-200"
+                        >
+                            ×
+                        </button>
                         <h3 className="text-2xl font-heading text-teal-100">{project.name}</h3>
                         <p className="text-indigo-100">{project.description}</p>
                         
@@ -64,12 +70,6 @@ export const ProjectCard = ({ project }) => {
                                 </span>
                             ))}
                         </div>
-                        <button
-                            onClick={() => setIsModalOpen(false)}
-                            className="mt-4 px-4 py-2 bg-teal-500/20 text-teal-100 rounded-lg hover:bg-teal-500/30 transition-colors duration-200"
-                        >
-                            Close
-                        </button>
                     </div>
                 </Modal>
             )}
