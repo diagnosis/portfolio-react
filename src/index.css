@@ -53,6 +53,37 @@
     animation: starTwinkle 1s ease-in-out infinite;
 }
 
+.comet {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.comet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to left, transparent, #fff);
+    transform: translateY(-50%);
+    transform-origin: left;
+}
+
+@keyframes cometMove {
+    from {
+        transform: translate(0, 0) rotate(var(--angle));
+    }
+    to {
+        transform: translate(var(--travel-distance), var(--travel-height)) rotate(var(--angle));
+    }
+}
+
 @keyframes starRotation {
     from {
         transform: rotateY(0deg);

@@ -7,6 +7,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
     useEffect(() => {
+        // Create star field
         const starField = document.createElement('div');
         starField.className = 'star-field';
         
@@ -22,10 +23,50 @@ function Index() {
         }
         
         document.querySelector('.aurora-bg').appendChild(starField);
+
+        // Comet creation function
+        const createComet = () => {
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+            
+            // Random starting position and angle
+            const startSide = Math.random() > 0.5 ? 'top' : 'left';
+            const angle = Math.random() * 45 - 22.5; // Random angle between -22.5 and 22.5 degrees
+            
+            if (startSide === 'top') {
+                comet.style.top = '0';
+                comet.style.left = `${Math.random() * 100}%`;
+                comet.style.setProperty('--travel-distance', `${Math.random() * 100 + 100}vh`);
+                comet.style.setProperty('--travel-height', `${Math.random() * 100}vw`);
+            } else {
+                comet.style.top = `${Math.random() * 100}%`;
+                comet.style.left = '0';
+                comet.style.setProperty('--travel-distance', `${Math.random() * 100 + 100}vw`);
+                comet.style.setProperty('--travel-height', `${Math.random() * 100}vh`);
+            }
+            
+            comet.style.setProperty('--angle', `${angle}deg`);
+            
+            document.querySelector('.aurora-bg').appendChild(comet);
+            
+            // Animate the comet
+            comet.style.animation = `cometMove ${Math.random() * 2 + 2}s linear`;
+            
+            // Remove comet after animation
+            comet.addEventListener('animationend', () => comet.remove());
+        };
+
+        // Create comets at random intervals
+        const cometInterval = setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance to create a comet
+                createComet();
+            }
+        }, 2000);
         
         // Cleanup
         return () => {
             starField.remove();
+            clearInterval(cometInterval);
         };
     }, []);
 
