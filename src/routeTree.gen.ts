@@ -144,7 +144,7 @@ export const routeTree = rootRoute
       "filePath": "index.jsx"
     },
     "/projects": {
-      "filePath": "projects.js"
+      "filePath": "projects.jsx"
     },
     "/skills": {
       "filePath": "skills.jsx"
