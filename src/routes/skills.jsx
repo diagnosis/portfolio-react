@@ -123,7 +123,7 @@ function Skills() {
     ]
 
     return (
-        <section className='aurora-bg -mt-[64px]'>
+        <section className='aurora-bg pt-24'>
             <div className='container mx-auto px-4 py-20'>
                 <h2 className='text-4xl md:text-5xl text-white text-center mb-12 font-heading animate-slide-up'>
                     Technical Skills
