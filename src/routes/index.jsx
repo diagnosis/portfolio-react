@@ -7,46 +7,6 @@ export const Route = createFileRoute('/')({
 
 function Index() {
     useEffect(() => {
-        // Create star field
-        const starField = document.createElement('div');
-        starField.className = 'star-field';
-        
-        // Star properties
-        const starSizes = ['small', 'medium', 'large'];
-        const starColors = ['blue', 'yellow', 'purple', ''];
-        
-        // Create stars in a grid pattern for better distribution
-        const rows = 20;
-        const cols = 15;
-        const totalStars = 300;
-        
-        for (let i = 0; i < totalStars; i++) {
-            const star = document.createElement('div');
-            const size = starSizes[Math.floor(Math.random() * starSizes.length)];
-            const color = starColors[Math.floor(Math.random() * starColors.length)];
-            
-            // Calculate position using grid-based distribution
-            const row = Math.floor(i / cols) % rows;
-            const col = i % cols;
-            
-            // Add some randomness within each grid cell
-            const baseX = (col / cols) * 100;
-            const baseY = (row / rows) * 100;
-            const randomOffset = 5; // 5% random offset within the cell
-            
-            const x = baseX + (Math.random() * randomOffset - randomOffset/2);
-            const y = baseY + (Math.random() * randomOffset - randomOffset/2);
-            
-            star.className = `star star--${size} ${color ? `star--${color}` : ''}`;
-            star.style.left = `${x}%`;
-            star.style.top = `${y}%`;
-            star.style.transform = `translateZ(${Math.random() * 500}px)`;
-            star.style.setProperty('--twinkle-duration', `${1 + Math.random() * 2}s`);
-            starField.appendChild(star);
-        }
-        
-        document.querySelector('.aurora-bg').appendChild(starField);
-
         // Comet creation function
         const createComet = () => {
             const comet = document.createElement('div');
@@ -89,7 +49,6 @@ function Index() {
         
         // Cleanup
         return () => {
-            starField.remove();
             clearInterval(cometInterval);
         };
     }, []);
