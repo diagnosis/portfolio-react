@@ -63,24 +63,25 @@
     z-index: 2;
 }
 
-.comet::before {
+.comet::after {
     content: '';
     position: absolute;
     top: 50%;
-    right: 50%;
-    width: 100px;
+    left: 4px;
+    width: 80px;
     height: 2px;
-    background: linear-gradient(to right, #fff, transparent);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
     transform: translateY(-50%);
-    transform-origin: right;
 }
 
 @keyframes cometMove {
-    from {
-        transform: translate(var(--start-x), var(--start-y));
+    0% {
+        transform: translate(var(--start-x), var(--start-y)) rotate(var(--angle));
+        opacity: 1;
     }
-    to {
-        transform: translate(var(--end-x), var(--end-y));
+    100% {
+        transform: translate(var(--end-x), var(--end-y)) rotate(var(--angle));
+        opacity: 0;
     }
 }
 
