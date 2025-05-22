@@ -16,7 +16,7 @@ export const Header = () => {
     ]
 
     return (
-        <nav className="bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800">
+        <nav className="bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 fixed w-full top-0 z-50">
             <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
                 <a href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm">
