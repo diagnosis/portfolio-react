@@ -9,7 +9,7 @@ function Index() {
         <section className="bg-gradient-to-br from-fuchsia-700 via-purple-700 to-blue-700 min-h-screen">
             <div className="absolute inset-0 bg-[url('/images/background.png')] bg-cover bg-center opacity-10 animate-fade-in"></div>
             <div className='px-4 mx-auto flex max-w-screen-xl flex-wrap items-center min-h-screen'>
-                <div className="card mx-auto flex flex-col items-left relative z-10 shadow-2xl backdrop-blur-sm">
+                <div className="mx-auto flex flex-col items-left relative z-10 bg-white/5 backdrop-blur-sm p-8 rounded-lg">
                     <p className="font-sans text-5xl text-indigo-100 animate-slide-up opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
                         I am,
                     </p>

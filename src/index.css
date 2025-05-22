@@ -1,4 +1,3 @@
-@import url('/public/magic-card.css');
 @import "tailwindcss";
 
 @plugin "flowbite-react/plugin/tailwindcss";
