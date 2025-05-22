@@ -8,9 +8,9 @@ export const Route = createRootRoute({
 
 function RootComponent() {
     return (
-        <div className="min-h-screen pt-[76px]">
+        <div className="min-h-screen">
             <Header />
-            <main className="relative">
+            <main>
                 <Outlet />
             </main>
             <TanStackRouterDevtools />
