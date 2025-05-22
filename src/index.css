@@ -21,15 +21,15 @@
 }
 
 .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+    animation: slideUp 1.2s ease-out forwards;
 }
 
 .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeIn 1.5s ease-out forwards;
 }
 
 .animate-bounce-in {
-    animation: bounceIn 1s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+    animation: bounceIn 1.5s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
 }
 
 @keyframes slideUp {
