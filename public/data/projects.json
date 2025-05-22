@@ -1,0 +1,34 @@
+[
+  {
+    "name": "LUXSUV",
+    "client": "Luxury SUV Transportation",
+    "image": "/images/projects/luxsuv.webp",
+    "description": "A web-based luxury ride services app providing premium transportation solutions for high-end clients. Features on-demand booking, real-time tracking, and secure payment integration.",
+    "responsibilities": [
+      "Designed and developed the front-end interface using Vanilla JS and Bootstrap.",
+      "Integrated RESTful APIs for booking and payment processing.",
+      "Implemented geolocation for routing and tracking"
+    ],
+    "technologies": ["Javascript", "Bootstrap", "REST API", "Geolocation API"],
+    "link": "https://luxsuv.us/"
+  },
+  {
+    "name": "TechLearn",
+    "client": "Online Education Platform",
+    "image": "/images/projects/techlearn.webp",
+    "description": "An e-learning platform offering tech courses, assessments, certificates, and interactive learning sessions for professionals and students.",
+    "responsibilities": [
+      "Developed responsive web interfaces using React and TailwindCSS.",
+      "Implemented dynamic routing using React Router.",
+      "Integrated backend APIs for user authentication, course data, and payment processing."
+    ],
+    "technologies": [
+      "React",
+      "TailwindCSS",
+      "React Router",
+      "REST API",
+      "Firebase"
+    ],
+    "link": "https://techlearn.com/"
+  }
+]
