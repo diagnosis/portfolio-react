@@ -21,9 +21,7 @@ function Skills() {
             items: [
                 { name: 'JavaScript', icon: faJs },
                 { name: 'TypeScript', icon: faCode },
-                { name: 'Python', icon: faPython },
                 { name: 'Java', icon: faJava },
-                { name: 'Ruby', icon: faCode },
                 { name: 'Swift', icon: faSwift },
                 { name: 'Kotlin', icon: faCode }
             ]
@@ -35,7 +33,6 @@ function Skills() {
                 { name: 'React', icon: faReact },
                 { name: 'Vue.js', icon: faVuejs },
                 { name: 'Next.js', icon: faCode },
-                { name: 'Svelte', icon: faCode },
                 { name: 'TailwindCSS', icon: faCode },
                 { name: 'HTML/CSS', icon: faCode }
             ]
@@ -46,8 +43,6 @@ function Skills() {
             items: [
                 { name: 'Node.js', icon: faNodeJs },
                 { name: 'Express', icon: faCode },
-                { name: 'Ruby on Rails', icon: faCode },
-                { name: 'Spring Boot', icon: faCode },
                 { name: 'PostgreSQL', icon: faDatabase },
                 { name: 'MongoDB', icon: faDatabase }
             ]
@@ -57,12 +52,10 @@ function Skills() {
             icon: faVial,
             items: [
                 { name: 'Selenium', icon: faCode },
-                { name: 'Cypress', icon: faCode },
+                { name: 'Appium', icon: faCode },
                 { name: 'Playwright', icon: faCode },
                 { name: 'WebdriverIO', icon: faCode },
                 { name: 'Jest', icon: faCode },
-                { name: 'Mocha', icon: faCode },
-                { name: 'Chai', icon: faCode }
             ]
         },
         {
@@ -73,7 +66,6 @@ function Skills() {
                 { name: 'Docker', icon: faDocker },
                 { name: 'Kubernetes', icon: faCloud },
                 { name: 'Jenkins', icon: faCode },
-                { name: 'CircleCI', icon: faCode },
                 { name: 'GitHub Actions', icon: faCode }
             ]
         },
@@ -90,7 +82,7 @@ function Skills() {
     ]
 
     return (
-        <section className='aurora-bg pt-24'>
+        <section className='aurora-bg pt-10'>
             <div className='container mx-auto px-4 py-20'>
                 <h2 className='text-4xl md:text-5xl text-white text-center mb-12 font-heading animate-slide-up'>
                     Technical Skills
