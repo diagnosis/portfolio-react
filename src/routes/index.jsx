@@ -29,28 +29,21 @@ function Index() {
             const comet = document.createElement('div');
             comet.className = 'comet';
             
-            // Random starting position and angle
-            const startSide = Math.random() > 0.5 ? 'top' : 'left';
-            const angle = Math.random() * 45 - 22.5; // Random angle between -22.5 and 22.5 degrees
+            // Calculate random start and end positions
+            const startX = -100; // Start from left of screen
+            const startY = Math.random() * window.innerHeight;
+            const endX = window.innerWidth + 100; // End at right of screen
+            const endY = startY + (Math.random() * 200 - 100); // Slight vertical variation
             
-            if (startSide === 'top') {
-                comet.style.top = '0';
-                comet.style.left = `${Math.random() * 100}%`;
-                comet.style.setProperty('--travel-distance', `${Math.random() * 100 + 100}vh`);
-                comet.style.setProperty('--travel-height', `${Math.random() * 100}vw`);
-            } else {
-                comet.style.top = `${Math.random() * 100}%`;
-                comet.style.left = '0';
-                comet.style.setProperty('--travel-distance', `${Math.random() * 100 + 100}vw`);
-                comet.style.setProperty('--travel-height', `${Math.random() * 100}vh`);
-            }
-            
-            comet.style.setProperty('--angle', `${angle}deg`);
+            comet.style.setProperty('--start-x', `${startX}px`);
+            comet.style.setProperty('--start-y', `${startY}px`);
+            comet.style.setProperty('--end-x', `${endX}px`);
+            comet.style.setProperty('--end-y', `${endY}px`);
             
             document.querySelector('.aurora-bg').appendChild(comet);
             
             // Animate the comet
-            comet.style.animation = `cometMove ${Math.random() * 2 + 2}s linear`;
+            comet.style.animation = `cometMove ${Math.random() * 1 + 1}s linear`;
             
             // Remove comet after animation
             comet.addEventListener('animationend', () => comet.remove());
