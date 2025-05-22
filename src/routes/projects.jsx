@@ -14,32 +14,46 @@ function Projects() {
 
   const projects = [
     {
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website built with React and TailwindCSS, featuring interactive animations and a dynamic project showcase.",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
-      technologies: ["React", "TailwindCSS", "Vite", "TanStack Router"],
+      title: "Bolt",
+      description: "An AI-powered coding assistant that helps developers write better code faster. Built with React and integrated with OpenAI's GPT models.",
+      image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg",
+      technologies: ["React", "Node.js", "OpenAI API", "WebContainers API"],
       features: [
-        "Responsive design with TailwindCSS",
-        "Interactive animations",
-        "Dynamic project cards with modal views",
-        "Contact form integration"
+        "Real-time code suggestions",
+        "Natural language processing",
+        "Code explanation and documentation",
+        "Multi-language support"
       ],
-      github: "https://github.com/yourusername/portfolio",
-      live: "https://your-portfolio.com"
+      github: "https://github.com/stackblitz/bolt",
+      live: "https://bolt.dev"
     },
     {
-      title: "E-commerce Platform",
-      description: "A full-featured e-commerce platform with product management, shopping cart, and secure checkout functionality.",
-      image: "https://images.pexels.com/photos/34577/pexels-photo.jpg",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Test Automation Framework",
+      description: "A comprehensive test automation framework for web applications using Selenium WebDriver and TestNG.",
+      image: "https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg",
+      technologies: ["Java", "Selenium", "TestNG", "Maven"],
       features: [
-        "User authentication",
-        "Product catalog",
-        "Shopping cart",
-        "Secure payments with Stripe"
+        "Page Object Model design pattern",
+        "Data-driven testing",
+        "Parallel test execution",
+        "Detailed HTML reports"
       ],
-      github: "https://github.com/yourusername/ecommerce",
-      live: "https://your-ecommerce.com"
+      github: "https://github.com/safademirhan9/test-automation-framework",
+      live: null
+    },
+    {
+      title: "Mobile Testing Framework",
+      description: "Cross-platform mobile testing framework using Appium for iOS and Android applications.",
+      image: "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg",
+      technologies: ["Java", "Appium", "TestNG", "REST Assured"],
+      features: [
+        "Cross-platform support",
+        "API integration testing",
+        "Screenshot capture on failure",
+        "CI/CD integration"
+      ],
+      github: "https://github.com/safademirhan9/mobile-testing-framework",
+      live: null
     }
   ];
 
