@@ -11,14 +11,21 @@ function Index() {
         const starField = document.createElement('div');
         starField.className = 'star-field';
         
-        // Create 200 stars with random positions
-        for (let i = 0; i < 200; i++) {
+        // Star properties
+        const starSizes = ['small', 'medium', 'large'];
+        const starColors = ['blue', 'yellow', 'purple', ''];
+        
+        // Create 300 stars with random properties
+        for (let i = 0; i < 300; i++) {
             const star = document.createElement('div');
-            star.className = 'star';
+            const size = starSizes[Math.floor(Math.random() * starSizes.length)];
+            const color = starColors[Math.floor(Math.random() * starColors.length)];
+            
+            star.className = `star star--${size} ${color ? `star--${color}` : ''}`;
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${Math.random() * 100}%`;
             star.style.transform = `translateZ(${Math.random() * 500}px)`;
-            star.style.animationDelay = `${Math.random() * 2}s`;
+            star.style.setProperty('--twinkle-duration', `${1 + Math.random() * 2}s`);
             starField.appendChild(star);
         }
         
