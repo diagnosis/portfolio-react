@@ -13,23 +13,22 @@ export const ProjectCard = ({ project }) => {
                 <p className='text-indigo-100 mb-4'>{project.client}</p>
                 
                 <div className='flex-1 flex flex-col'>
-
-                        
-                        <div className="mt-4 space-y-4 pr-2">
-                            <p className='text-indigo-100'>{project.description}</p>
-                            <button 
-                                onClick={() => setIsModalOpen(true)}
-                                className='text-teal-300 hover:text-teal-400 transition-colors duration-200'
-                            >
-                                Read more...
-                            </button>
-                        </div>
+                    <div className="flex-1">
+                        <p className='text-indigo-100 mb-6'>{project.description}</p>
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
+                            className='inline-flex items-center text-teal-300 hover:text-teal-400 transition-colors duration-200 group'
+                        >
+                            Read more 
+                            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                        </button>
+                    </div>
 
                     <a 
                         href={project.link} 
                         target="_blank" 
                         rel="noreferrer"
-                        className='mt-auto text-center px-4 py-2 bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 text-indigo-100 rounded-lg hover:text-purple-300 transition-colors duration-200'
+                        className='mt-8 text-center px-4 py-2 bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 text-indigo-100 rounded-lg hover:text-purple-300 transition-colors duration-200'
                     >
                         View Project <FontAwesomeIcon icon={faExternalLink} className="ml-2" />
                     </a>
