@@ -13,10 +13,7 @@ export const ProjectCard = ({ project }) => {
                 <p className='text-indigo-100 mb-4'>{project.client}</p>
                 
                 <div className='flex-1 flex flex-col'>
-                    <details className="group mb-4">
-                        <summary className='cursor-pointer flex items-center justify-between w-full px-4 py-2 text-left text-teal-100 bg-teal-500/10 rounded-lg hover:bg-teal-500/20 transition-colors duration-200'>
-                            <span>Project Details</span>
-                        </summary>
+
                         
                         <div className="mt-4 space-y-4 pr-2">
                             <p className='text-indigo-100'>{project.description}</p>
@@ -27,7 +24,6 @@ export const ProjectCard = ({ project }) => {
                                 Read more...
                             </button>
                         </div>
-                    </details>
 
                     <a 
                         href={project.link} 
