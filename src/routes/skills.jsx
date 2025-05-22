@@ -48,27 +48,27 @@ function Skills() {
     const skillCategories = [
         {
             title: 'Programming Languages',
-            items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Kotlin', 'Swift']
+            items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Ruby', 'Swift', 'Kotlin']
         },
         {
             title: 'Frontend Development',
-            items: ['React', 'Vue.js', 'Next.js', 'TailwindCSS', 'HTML5/CSS3']
+            items: ['React', 'Vue.js', 'Next.js', 'Svelte', 'TailwindCSS', 'HTML/CSS']
         },
         {
             title: 'Backend Development',
-            items: ['Node.js', 'Express', 'Spring Boot', 'Django', 'PostgreSQL']
+            items: ['Node.js', 'Express', 'Ruby on Rails', 'Spring Boot', 'PostgreSQL', 'MongoDB']
         },
         {
             title: 'Testing & QA',
-            items: ['Jest', 'Cypress', 'Selenium', 'JUnit', 'TestNG']
+            items: ['Selenium', 'Cypress', 'Playwright', 'WebdriverIO', 'Jest', 'Mocha', 'Chai']
         },
         {
-            title: 'DevOps & Tools',
-            items: ['Git', 'Docker', 'Jenkins', 'AWS', 'Linux']
+            title: 'DevOps & Cloud',
+            items: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'CircleCI', 'GitHub Actions']
         },
         {
             title: 'Mobile Development',
-            items: ['React Native', 'Android', 'iOS', 'Flutter']
+            items: ['React Native', 'Android (Native)', 'iOS (Native)', 'Flutter']
         }
     ]
 
