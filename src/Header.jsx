@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Menu, User, Code2, Briefcase, GraduationCap, Mail } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -8,24 +9,24 @@ export const Header = () => {
         'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
 
     const links = [
-        { href: '/about', label: 'About', icon: User },
-        { href: '/skills', label: 'Skills', icon: Code2 },
-        { href: '/projects', label: 'Projects', icon: Briefcase },
-        { href: '/study-projects', label: 'Study Projects', icon: GraduationCap },
-        { href: '/contact', label: 'Contact', icon: Mail },
+        { to: '/about', label: 'About', icon: User },
+        { to: '/skills', label: 'Skills', icon: Code2 },
+        { to: '/projects', label: 'Projects', icon: Briefcase },
+        { to: '/study-projects', label: 'Study Projects', icon: GraduationCap },
+        { to: '/contact', label: 'Contact', icon: Mail },
     ]
 
     return (
         <nav className="bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 fixed w-full top-0 z-50">
             <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-                <a href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+                <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm">
                         <span className="text-xl font-bold text-white">SD</span>
                     </div>
                     <span className="font-heading self-center text-2xl font-semibold whitespace-nowrap text-white hover:text-purple-300 text-shadow-custom hover:scale-105 transition-all duration-200">
-            Safa Demirkan
-          </span>
-                </a>
+                        Safa Demirkan
+                    </span>
+                </Link>
 
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -50,11 +51,11 @@ export const Header = () => {
                         {links.map((link) => {
                             const Icon = link.icon
                             return (
-                                <li key={link.href}>
-                                    <a href={link.href} className={linkStyle + ' flex items-center justify-center gap-1.5'}>
+                                <li key={link.to}>
+                                    <Link to={link.to} className={linkStyle + ' flex items-center justify-center gap-1.5'}>
                                         <Icon size={18} />
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             )
                         })}
