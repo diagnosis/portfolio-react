@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Modal} from "../Modal.jsx";
+import {Modal} from "./Modal.jsx";
 
 
 const getProjectDetails = ({projectDetail}) => {
