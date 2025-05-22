@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SkillCard } from '../SkillCard.jsx'
 import { useEffect } from 'react'
+import { faJs, faPython, faJava, faSwift, faReact, faVuejs, faNodeJs, faAws, faDocker, faAndroid, faApple } from '@fortawesome/free-brands-svg-icons'
+import { faCode, faDatabase, faVial, faCloud, faMobile } from '@fortawesome/free-solid-svg-icons'
 
 export const Route = createFileRoute('/skills')({
   component: Skills,
@@ -48,27 +50,75 @@ function Skills() {
     const skillCategories = [
         {
             title: 'Programming Languages',
-            items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Ruby', 'Swift', 'Kotlin']
+            icon: faCode,
+            items: [
+                { name: 'JavaScript', icon: faJs },
+                { name: 'TypeScript', icon: faCode },
+                { name: 'Python', icon: faPython },
+                { name: 'Java', icon: faJava },
+                { name: 'Ruby', icon: faCode },
+                { name: 'Swift', icon: faSwift },
+                { name: 'Kotlin', icon: faCode }
+            ]
         },
         {
             title: 'Frontend Development',
-            items: ['React', 'Vue.js', 'Next.js', 'Svelte', 'TailwindCSS', 'HTML/CSS']
+            icon: faCode,
+            items: [
+                { name: 'React', icon: faReact },
+                { name: 'Vue.js', icon: faVuejs },
+                { name: 'Next.js', icon: faCode },
+                { name: 'Svelte', icon: faCode },
+                { name: 'TailwindCSS', icon: faCode },
+                { name: 'HTML/CSS', icon: faCode }
+            ]
         },
         {
             title: 'Backend Development',
-            items: ['Node.js', 'Express', 'Ruby on Rails', 'Spring Boot', 'PostgreSQL', 'MongoDB']
+            icon: faDatabase,
+            items: [
+                { name: 'Node.js', icon: faNodeJs },
+                { name: 'Express', icon: faCode },
+                { name: 'Ruby on Rails', icon: faCode },
+                { name: 'Spring Boot', icon: faCode },
+                { name: 'PostgreSQL', icon: faDatabase },
+                { name: 'MongoDB', icon: faDatabase }
+            ]
         },
         {
             title: 'Testing & QA',
-            items: ['Selenium', 'Cypress', 'Playwright', 'WebdriverIO', 'Jest', 'Mocha', 'Chai']
+            icon: faVial,
+            items: [
+                { name: 'Selenium', icon: faCode },
+                { name: 'Cypress', icon: faCode },
+                { name: 'Playwright', icon: faCode },
+                { name: 'WebdriverIO', icon: faCode },
+                { name: 'Jest', icon: faCode },
+                { name: 'Mocha', icon: faCode },
+                { name: 'Chai', icon: faCode }
+            ]
         },
         {
             title: 'DevOps & Cloud',
-            items: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'CircleCI', 'GitHub Actions']
+            icon: faCloud,
+            items: [
+                { name: 'AWS', icon: faAws },
+                { name: 'Docker', icon: faDocker },
+                { name: 'Kubernetes', icon: faCloud },
+                { name: 'Jenkins', icon: faCode },
+                { name: 'CircleCI', icon: faCode },
+                { name: 'GitHub Actions', icon: faCode }
+            ]
         },
         {
             title: 'Mobile Development',
-            items: ['React Native', 'Android (Native)', 'iOS (Native)', 'Flutter']
+            icon: faMobile,
+            items: [
+                { name: 'React Native', icon: faReact },
+                { name: 'Android (Native)', icon: faAndroid },
+                { name: 'iOS (Native)', icon: faApple },
+                { name: 'Flutter', icon: faMobile }
+            ]
         }
     ]
 
@@ -83,6 +133,7 @@ function Skills() {
                         <SkillCard 
                             key={index}
                             skill={category.title}
+                            icon={category.icon}
                             items={category.items}
                         />
                     ))}
