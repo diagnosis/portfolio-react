@@ -5,18 +5,25 @@ import { ChevronDown } from 'lucide-react';
 export const ProjectCard = ({project}) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const toggleOpen = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsOpen(prev => !prev);
+    };
+
     return (
-        <div className='flex flex-col p-6 h-full bg-black/30 backdrop-blur-sm rounded-lg border border-teal-500/20 transform hover:scale-105 transition-all duration-300 animate-fade-in overflow-hidden'>
+        <motion.div 
+            className='flex flex-col p-6 h-full bg-black/30 backdrop-blur-sm rounded-lg border border-teal-500/20 transform hover:scale-105 transition-all duration-300 animate-fade-in overflow-hidden'
+            layout
+        >
             <h3 className='text-2xl text-teal-100 mb-2 font-heading'>{project.name}</h3>
             <p className='text-indigo-100 mb-4'>{project.client}</p>
             
             <div className='flex-1 flex flex-col'>
-                <button 
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setIsOpen(!isOpen);
-                    }}
+                <motion.button 
+                    onClick={toggleOpen}
                     className='flex items-center justify-between w-full px-4 py-2 mb-4 text-left text-teal-100 bg-teal-500/10 rounded-lg hover:bg-teal-500/20 transition-colors duration-200'
+                    layout
                 >
                     <span>Project Details</span>
                     <motion.div
@@ -25,9 +32,9 @@ export const ProjectCard = ({project}) => {
                     >
                         <ChevronDown size={20} />
                     </motion.div>
-                </button>
+                </motion.button>
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {isOpen && (
                         <motion.div
                             initial={{ height: 0, opacity: 0 }}
@@ -69,6 +76,6 @@ export const ProjectCard = ({project}) => {
                     View Project
                 </a>
             </div>
-        </div>
+        </motion.div>
     );
 };
