@@ -12,6 +12,7 @@ function Projects() {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
 
+
   async function loadProjects() {
     if(loading){
       const data = await fetchProjectData()
