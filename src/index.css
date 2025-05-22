@@ -20,6 +20,65 @@
     @apply bg-gray-100 bg-[url('/images/skills.jpg')] bg-cover bg-center min-h-screen relative overflow-hidden;
 }
 
+/* Aurora Background */
+.aurora-bg {
+    @apply relative min-h-screen overflow-hidden bg-[#0B1026];
+}
+
+.aurora-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 60% 20%, rgba(60, 8, 118, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 40% 40%, rgba(16, 128, 208, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 30% 60%, rgba(64, 184, 83, 0.4) 0%, transparent 40%);
+    animation: auroraFlow 15s ease-in-out infinite;
+    z-index: 1;
+}
+
+.aurora-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+@keyframes auroraFlow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 .animate-slide-up {
     animation: slideUp 1.2s ease-out forwards;
 }

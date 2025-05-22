@@ -6,10 +6,9 @@ export const Route = createFileRoute('/')({
 
 function Index() {
     return (
-        <section className="bg-gradient-to-br from-fuchsia-700 via-purple-700 to-blue-700 min-h-screen -mt-[64px]">
-            <div className="absolute inset-0 bg-[url('/images/background.png')] bg-cover bg-center opacity-10 animate-fade-in"></div>
+        <section className="aurora-bg -mt-[64px]">
             <div className='px-4 mx-auto flex max-w-screen-xl flex-wrap items-center min-h-screen'>
-                <div className="mx-auto flex flex-col items-left relative z-10 bg-white/5 backdrop-blur-sm p-8 rounded-lg">
+                <div className="mx-auto flex flex-col items-left relative z-10 bg-black/20 backdrop-blur-sm p-8 rounded-lg">
                     <p className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-indigo-100 animate-slide-up">
                         I am,
                     </p>
@@ -23,7 +22,7 @@ function Index() {
                         <summary className="cursor-pointer hover:text-purple-300 transition-colors duration-200">
                             Details
                         </summary>
-                        <div className="bg-white/10 backdrop-blur-sm text-indigo-100 p-4 rounded-lg mt-2 shadow-xl">
+                        <div className="bg-black/30 backdrop-blur-sm text-indigo-100 p-4 rounded-lg mt-2 shadow-xl">
                             This is a secret.
                         </div>
                     </details>
