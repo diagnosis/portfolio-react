@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 export const ProjectCard = ({ project }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Handle body scroll lock when modal is open
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isModalOpen]);
 
     const getStatusColor = (status) => {
         switch (status) {
@@ -17,6 +29,11 @@ export const ProjectCard = ({ project }) => {
             default:
                 return 'bg-gray-600';
         }
+    };
+
+    const handleModalClose = (e) => {
+        e.stopPropagation();
+        setIsModalOpen(false);
     };
 
     return (
@@ -56,23 +73,27 @@ export const ProjectCard = ({ project }) => {
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
-                    <div className="bg-gray-900/95 backdrop-blur-lg rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 className="text-2xl text-teal-100 font-heading">{project.title}</h2>
-                                <p className="text-teal-300">{project.client}</p>
-                            </div>
-                            <button 
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsModalOpen(false);
-                                }}
-                                className="text-teal-100 hover:text-teal-300 transition-colors"
-                            >
-                                ✕
-                            </button>
+                <div 
+                    className="fixed inset-0 bg-black/70 flex items-start justify-center p-4 z-50 overflow-y-auto"
+                    onClick={handleModalClose}
+                >
+                    <div 
+                        className="bg-gray-900/95 backdrop-blur-lg rounded-lg p-6 max-w-2xl w-full my-8 relative"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <button 
+                            onClick={handleModalClose}
+                            className="absolute right-4 top-4 text-teal-100 hover:text-teal-300 transition-colors w-8 h-8 flex items-center justify-center rounded-full bg-black/20"
+                            aria-label="Close modal"
+                        >
+                            ✕
+                        </button>
+                        
+                        <div className="mb-4">
+                            <h2 className="text-2xl text-teal-100 font-heading">{project.title}</h2>
+                            <p className="text-teal-300">{project.client}</p>
                         </div>
+                        
                         <div className="relative">
                             <img 
                                 src={project.image} 
@@ -83,16 +104,19 @@ export const ProjectCard = ({ project }) => {
                                 {project.status}
                             </span>
                         </div>
+                        
                         <p className="text-indigo-100 mb-6">{project.description}</p>
+                        
                         <div className="mb-6">
                             <h3 className="text-lg text-teal-100 mb-2">Key Features:</h3>
-                            <ul className="list-disc list-inside text-indigo-100">
+                            <ul className="list-disc list-inside text-indigo-100 space-y-1">
                                 {project.features.map((feature, index) => (
                                     <li key={index}>{feature}</li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="flex flex-wrap gap-2 mb-6">
+                        
+                        <div className="flex flex-wrap gap-2">
                             {project.technologies.map((tech, index) => (
                                 <span 
                                     key={index}
