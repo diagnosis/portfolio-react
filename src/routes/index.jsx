@@ -28,7 +28,7 @@ function Index() {
                     </details>
                     <Link
                         to="/contact"
-                        className="block self-center w-fit mt-6 bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-white hover:text-teal-200 px-6 py-3 rounded-lg hover:scale-105 transition-all duration-200 animate-fade-in shadow-lg hover:shadow-xl"
+                        className="block self-center w-fit mt-6 bg-gradient-to-r from-blue-500 via-purple-700 to-indigo-500 text-white hover:text-purple-300 px-6 py-3 rounded-lg hover:scale-105 transition-all duration-200 animate-fade-in shadow-lg hover:shadow-xl"
                     >
                         Contact Me
                     </Link>
