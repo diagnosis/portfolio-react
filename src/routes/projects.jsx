@@ -14,46 +14,88 @@ function Projects() {
 
   const projects = [
     {
-      title: "Bolt",
-      description: "An AI-powered coding assistant that helps developers write better code faster. Built with React and integrated with OpenAI's GPT models.",
-      image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg",
-      technologies: ["React", "Node.js", "OpenAI API", "WebContainers API"],
+      title: "LuxSUV",
+      description: "LUX SUV Transportation - A comprehensive test automation framework for web and mobile applications, featuring end-to-end testing capabilities.",
+      image: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg",
+      technologies: ["Java", "Selenium", "Appium", "TestNG", "Maven"],
       features: [
-        "Real-time code suggestions",
-        "Natural language processing",
-        "Code explanation and documentation",
-        "Multi-language support"
+        "End-to-end test automation",
+        "Cross-platform mobile testing",
+        "CI/CD integration",
+        "Detailed reporting"
       ],
-      github: "https://github.com/stackblitz/bolt",
-      live: "https://bolt.dev"
+      status: "Current",
+      client: "LUX SUV Transportation"
     },
     {
-      title: "Test Automation Framework",
-      description: "A comprehensive test automation framework for web applications using Selenium WebDriver and TestNG.",
-      image: "https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg",
-      technologies: ["Java", "Selenium", "TestNG", "Maven"],
+      title: "Companion App Test Automation",
+      description: "Developed and implemented automated testing solutions for Wizards of the Coast's companion mobile application.",
+      image: "https://images.pexels.com/photos/7887800/pexels-photo-7887800.jpeg",
+      technologies: ["Java", "Appium", "Selenium", "REST Assured", "Jenkins"],
       features: [
-        "Page Object Model design pattern",
-        "Data-driven testing",
-        "Parallel test execution",
-        "Detailed HTML reports"
+        "Mobile app automation",
+        "API testing integration",
+        "Cross-platform compatibility",
+        "Continuous integration workflow"
       ],
-      github: "https://github.com/safademirhan9/test-automation-framework",
-      live: null
+      status: "Completed",
+      client: "Wizards of the Coast"
     },
     {
-      title: "Mobile Testing Framework",
-      description: "Cross-platform mobile testing framework using Appium for iOS and Android applications.",
-      image: "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg",
-      technologies: ["Java", "Appium", "TestNG", "REST Assured"],
+      title: "Health Connect Automation",
+      description: "Automated testing framework for Providence Health Services' healthcare connectivity platform.",
+      image: "https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg",
+      technologies: ["Python", "Selenium", "PyTest", "Docker", "AWS"],
       features: [
-        "Cross-platform support",
+        "Healthcare systems integration testing",
+        "Automated compliance verification",
+        "Cloud-based test execution",
+        "Security testing protocols"
+      ],
+      status: "Completed",
+      client: "Providence Health Services"
+    },
+    {
+      title: "ADP Migration Testing",
+      description: "Led the testing efforts for Sempra Energy's ADP system migration, ensuring data integrity and system functionality.",
+      image: "https://images.pexels.com/photos/5473298/pexels-photo-5473298.jpeg",
+      technologies: ["Java", "Selenium", "JUnit", "SQL", "Jenkins"],
+      features: [
+        "Data migration validation",
+        "System integration testing",
+        "Performance testing",
+        "Automated regression suite"
+      ],
+      status: "Completed",
+      client: "Sempra Energy"
+    },
+    {
+      title: "PMS Mobile App Testing",
+      description: "Comprehensive mobile application testing framework for Hilton's Property Management System.",
+      image: "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg",
+      technologies: ["Java", "Appium", "TestNG", "REST Assured", "Azure DevOps"],
+      features: [
+        "Mobile app automation",
+        "Cross-device testing",
         "API integration testing",
-        "Screenshot capture on failure",
-        "CI/CD integration"
+        "Automated deployment verification"
       ],
-      github: "https://github.com/safademirhan9/mobile-testing-framework",
-      live: null
+      status: "Completed",
+      client: "Hilton"
+    },
+    {
+      title: "Japan Migration & UK Chip and PIN",
+      description: "Managed testing for American Express's Japan market migration and UK Chip and PIN implementation.",
+      image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg",
+      technologies: ["Python", "Robot Framework", "Selenium", "Jenkins", "Docker"],
+      features: [
+        "International payment systems testing",
+        "Security compliance verification",
+        "Cross-market functionality testing",
+        "Automated security scanning"
+      ],
+      status: "Completed",
+      client: "American Express"
     }
   ];
 
