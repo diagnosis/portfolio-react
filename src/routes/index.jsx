@@ -42,7 +42,7 @@ function Index() {
 
         // Create comets at random intervals
         const cometInterval = setInterval(() => {
-            if (Math.random() > 0.7) { // 30% chance to create a comet
+            if (Math.random() > 0.6) { // 40% chance to create a comet
                 createComet();
             }
         }, 1000);
