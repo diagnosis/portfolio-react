@@ -1,10 +1,34 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
     component: Index,
 });
 
 function Index() {
+    useEffect(() => {
+        const starField = document.createElement('div');
+        starField.className = 'star-field';
+        
+        // Create 200 stars with random positions
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.transform = `translateZ(${Math.random() * 500}px)`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starField.appendChild(star);
+        }
+        
+        document.querySelector('.aurora-bg').appendChild(starField);
+        
+        // Cleanup
+        return () => {
+            starField.remove();
+        };
+    }, []);
+
     return (
         <section className="aurora-bg -mt-[64px]">
             <div className='px-4 mx-auto flex max-w-screen-xl flex-wrap items-center min-h-screen'>
