@@ -1,0 +1,66 @@
+import { useState } from 'react'
+import { Menu, User, Code2, Briefcase, GraduationCap, Mail } from 'lucide-react'
+
+export const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const linkStyle =
+        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
+
+    const links = [
+        { href: '/about', label: 'About', icon: User },
+        { href: '/skills', label: 'Skills', icon: Code2 },
+        { href: '/projects', label: 'Projects', icon: Briefcase },
+        { href: '/study-projects', label: 'Study Projects', icon: GraduationCap },
+        { href: '/contact', label: 'Contact', icon: Mail },
+    ]
+
+    return (
+        <nav className="bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800">
+            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+                <a href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm">
+                        <span className="text-xl font-bold text-white">SD</span>
+                    </div>
+                    <span className="font-heading self-center text-2xl font-semibold whitespace-nowrap text-white hover:text-purple-300 text-shadow-custom hover:scale-105 transition-all duration-200">
+            Safa Demirkan
+          </span>
+                </a>
+
+                <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    type="button"
+                    className="ml-auto mr-2 inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-violet-300 hover:bg-purple-600 focus:ring-2 focus:ring-violet-300 focus:outline-none md:hidden transition-colors duration-200"
+                    aria-controls="navbar-default"
+                    aria-expanded={isMenuOpen}
+                >
+                    <span className="sr-only">Open main menu</span>
+                    <Menu size={24} className={`transform transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`} />
+                </button>
+
+                <div
+                    className={`w-full md:block md:w-auto transition-all duration-600 ease-in-out ${
+                        isMenuOpen
+                            ? 'max-h-96 opacity-100'
+                            : 'max-h-0 opacity-0 md:max-h-96 md:opacity-100'
+                    }`}
+                    id="navbar-default"
+                >
+                    <ul className="mt-4 flex flex-col rounded-lg border border-violet-200 bg-transparent p-4 font-sans font-medium md:mt-0 md:flex-row md:space-x-4 md:border-0 md:p-0 transform transition-transform duration-200">
+                        {links.map((link) => {
+                            const Icon = link.icon
+                            return (
+                                <li key={link.href}>
+                                    <a href={link.href} className={linkStyle + ' flex items-center justify-center gap-1.5'}>
+                                        <Icon size={18} />
+                                        {link.label}
+                                    </a>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    )
+}
