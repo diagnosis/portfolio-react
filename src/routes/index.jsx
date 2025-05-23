@@ -25,9 +25,8 @@ function Index() {
                         Sr. Software Engineer in Test and Creative Developer
                     </p>
                     <p className="text-indigo-100 mt-6 text-lg animate-fade-in">
-                        A passionate software engineer with extensive experience in test automation and development. 
-                        I thrive on creating robust testing frameworks and building innovative solutions. 
-                        Always eager to learn and share knowledge with the developer community.
+                        Passionate about crafting robust test automation frameworks and developing innovative solutions. 
+                        Let's build something amazing together!
                     </p>
                     <Link
                         to="/contact"
