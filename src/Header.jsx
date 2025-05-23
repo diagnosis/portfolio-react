@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
-import { Menu, User, UserCircle, Code2, Code2Icon, Briefcase, BriefcaseIcon, GraduationCap, School2Icon, Mail, MailIcon } from 'lucide-react'
+import { Menu, User, Code2, Code2Icon, Briefcase, BriefcaseIcon, GraduationCap, School2Icon, Mail, MailIcon } from 'lucide-react'
 import {Link, useRouter} from '@tanstack/react-router'
+import Footer from './Footer'
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -10,7 +11,7 @@ export const Header = () => {
         'nav-link block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-purple-300 hover:decoration-4 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
 
     const links = [
-        { href: '/about', label: 'About', icon: User, filledIcon: UserCircle },
+        { href: '/about', label: 'About', icon: User, filledIcon: User },
         { href: '/skills', label: 'Skills', icon: Code2, filledIcon: Code2Icon },
         { href: '/projects', label: 'Projects', icon: Briefcase, filledIcon: BriefcaseIcon },
         { href: '/study-projects', label: 'Study Projects', icon: GraduationCap, filledIcon: School2Icon },
@@ -21,10 +22,8 @@ export const Header = () => {
         if (!e.target.classList.contains('nav-link')) return
         setIsMenuOpen(false)
         
-        // Wait for the next tick to ensure router state is updated
         await new Promise(resolve => setTimeout(resolve, 0))
         
-        // Find all navigation links and remove active styles
         const links = document.querySelectorAll('.nav-link')
         links.forEach(link => {
             link.classList.remove('underline')
@@ -33,7 +32,6 @@ export const Header = () => {
             link.classList.remove('decoration-4')
         })
         
-        // Add active styles to clicked link
         if (e.target.classList.contains('active')) {
             e.target.classList.add('underline')
             e.target.classList.add('text-purple-300')
@@ -42,7 +40,6 @@ export const Header = () => {
         }
     }
 
-    // Set initial active link on mount
     useEffect(() => {
         const currentPath = router.state.location.pathname
         const activeLink = document.querySelector(`.nav-link[href="${currentPath}"]`)
@@ -80,9 +77,9 @@ export const Header = () => {
                 <div
                     className={`w-full md:block md:w-auto transition-all duration-600 ease-in-out ${
                         isMenuOpen
-                            ? 'max-h-96 opacity-100'
+                            ? 'max-h-[calc(100vh-5rem)] opacity-100'
                             : 'max-h-0 opacity-0 md:max-h-96 md:opacity-100'
-                    }`}
+                    } ${isMenuOpen ? 'overflow-y-auto' : 'overflow-hidden'}`}
                     id="navbar-default"
                 >
                     <ul className="mt-4 flex flex-col rounded-lg border border-violet-200 bg-transparent p-4 font-sans font-medium md:mt-0 md:flex-row md:space-x-4 md:border-0 md:p-0 transform transition-transform duration-200">
@@ -103,6 +100,9 @@ export const Header = () => {
                             )
                         })}
                     </ul>
+                    <div className="md:hidden mt-4">
+                        <Footer />
+                    </div>
                 </div>
             </div>
         </nav>
