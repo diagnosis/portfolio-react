@@ -10,18 +10,27 @@
     --text-color: #1f2937;
 }
 
-/* Aurora Background */
-.aurora-bg {
-    @apply relative overflow-y-auto bg-[#0B1026];
+/* Set background on body */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #0B1026;
     background-image: url('/public/images/heart-of-universe.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Aurora Background */
+.aurora-bg {
+    @apply relative overflow-y-auto;
     perspective: 1000px;
 }
 
 .aurora-bg::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -32,6 +41,7 @@
         radial-gradient(circle at 30% 60%, rgba(94, 234, 212, 0.3) 0%, transparent 40%);
     animation: auroraFlow 15s ease-in-out infinite;
     z-index: 1;
+    pointer-events: none;
 }
 
 .comet {
