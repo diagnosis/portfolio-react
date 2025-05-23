@@ -14,21 +14,5 @@
       "Created reusable component library",
       "Optimized performance and accessibility"
     ]
-  },
-  {
-    "name": "Word Chain Game",
-    "category": "Web Development",
-    "image": "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg",
-    "description": "An engaging word chain game where players connect words by matching the last letter of the previous word. Features real-time validation, score tracking, and multiplayer support using REST API.",
-    "technologies": ["React", "TanStack Router", "TanStack Query", "CSS", "REST API"],
-    "link": "https://github.com/diagnosis/word-chain-game",
-    "website": "https://word-chain-game-fun.netlify.app/",
-    "status": "Completed",
-    "learningOutcomes": [
-      "Implemented efficient state management with TanStack Query",
-      "Created responsive and intuitive game interface",
-      "Developed RESTful API integration",
-      "Built real-time word validation system"
-    ]
   }
 ]
