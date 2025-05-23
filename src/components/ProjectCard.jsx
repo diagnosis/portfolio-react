@@ -64,10 +64,10 @@ export const ProjectCard = ({ project }) => {
                         <p className='text-indigo-100 mb-6'>{project.description}</p>
                         <button 
                             onClick={() => setIsModalOpen(true)}
-                            className='inline-flex items-center text-teal-300 hover:text-teal-400 transition-colors duration-200 group'
+                            className='px-4 py-2 rounded-lg bg-teal-500/20 text-teal-100 hover:bg-teal-500/30 transition-all duration-200 cursor-pointer flex items-center gap-2'
                         >
                             Read more 
-                            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                            <span className="transition-transform group-hover:translate-x-1">→</span>
                         </button>
                     </div>
 
