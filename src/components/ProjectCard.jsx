@@ -55,7 +55,7 @@ export const ProjectCard = ({ project }) => {
 
     return (
         <>
-            <div className='flex flex-col p-6 h-full bg-black/30 backdrop-blur-sm rounded-lg border border-teal-500/20 hover:scale-105 transition-all duration-300 animate-fade-in'>
+            <div className='flex flex-col p-6 h-full bg-black/30 backdrop-blur-sm rounded-lg border border-teal-500/20 hover:scale-[1.02] transition-all duration-300 animate-fade-in'>
                 <h3 className='text-2xl text-teal-100 mb-2 font-heading'>{project.name}</h3>
                 <p className='text-indigo-100 mb-4'>{project.client}</p>
                 
