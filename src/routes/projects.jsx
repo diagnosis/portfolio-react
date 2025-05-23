@@ -16,7 +16,6 @@ function Projects() {
   async function loadProjects() {
     if(loading){
       const data = await fetchProjectData()
-      console.log(data)
       setProjects(data)
       setLoading(false)
     }

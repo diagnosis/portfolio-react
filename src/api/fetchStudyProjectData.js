@@ -5,7 +5,6 @@ export default async function fetchStudyProjectData() {
             throw new Error(`HTTP error! Status: ${res.status}`);
         }
         const text = await res.text();
-        console.log('Raw Response:', text);
         const data = JSON.parse(text);
         return data;
     } catch (error) {

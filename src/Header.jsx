@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { Menu, User, Code2, Briefcase, GraduationCap, Mail } from 'lucide-react'
-import { Link } from '@tanstack/react-router'
+import {Link, useRouter} from '@tanstack/react-router'
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+    const router = useRouter()
+    const [linkchange, setLinkchange] = useState(false)
     const linkStyle =
         'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
 
@@ -15,6 +16,10 @@ export const Header = () => {
         { href: '/study-projects', label: 'Study Projects', icon: GraduationCap },
         { href: '/contact', label: 'Contact', icon: Mail },
     ]
+
+    useEffect(() => {
+        console.log(router.parseLocation())
+    }, [linkchange]);
 
     return (
         <nav className="bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 fixed w-full top-0 z-50">
@@ -52,10 +57,24 @@ export const Header = () => {
                             const Icon = link.icon
                             return (
                                 <li key={link.href}>
-                                    <Link 
-                                        to={link.href} 
+                                    <Link
+                                        to={link.href}
                                         className={linkStyle + ' flex items-center justify-center gap-1.5'}
-                                        onClick={() => setIsMenuOpen(false)}
+                                        onClick={(e) => {
+
+                                            setTimeout(() => {
+                                                console.log(e.target)
+                                                if(e.target.classList.contains('active')){
+                                                    Array.from(document.getElementsByTagName('a')).forEach(
+                                                        (a) => a.classList.remove('underline')
+                                                    )
+                                                    e.target.classList.add('underline')
+                                                }
+                                            }, 2000);
+
+
+                                            setIsMenuOpen(false)
+                                        }}
                                     >
                                         <Icon size={18} />
                                         {link.label}
