@@ -9,10 +9,4 @@ export default defineConfig({
     target: 'react',
     autoCodeSplitting: true,
   }), react(), tailwindcss()],
-  server: {
-    historyApiFallback: true,
-  },
-  preview: {
-    historyApiFallback: true,
-  }
 })
