@@ -65,8 +65,7 @@ function Contact() {
   return (
     <section className="aurora-bg pt-16">
       <div className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
-          {/* Contact Form */}
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="bg-black/70 p-8 rounded-lg ring-1 ring-gray-900/5">
             <h2 className="text-4xl text-teal-100 mb-6 font-heading">Get in Touch</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -115,35 +114,17 @@ function Contact() {
                   placeholder="Your message..."
                 />
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-teal-600 text-white font-medium hover:from-purple-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform transition-all duration-200 ${
-                  isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:scale-[1.02]'
-                }`}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-              {submitStatus === 'success' && (
-                <p className="text-green-400 text-center">Message sent successfully!</p>
-              )}
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="bg-black/70 p-8 rounded-lg ring-1 ring-gray-900/5">
-            <h3 className="text-2xl text-teal-100 mb-6 font-heading">Connect With Me</h3>
-            <div className="space-y-6">
-              <p className="text-indigo-100">
-                I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
-              </p>
-              <div className="space-y-4">
-                <h4 className="text-lg text-teal-100 font-heading">Location</h4>
-                <p className="text-indigo-100">Seattle, WA</p>
-              </div>
-              <div className="space-y-4">
-                <h4 className="text-lg text-teal-100 font-heading">Social Media</h4>
-                <div className="flex space-x-4">
+              <div className="space-y-6">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-teal-600 text-white font-medium hover:from-purple-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform transition-all duration-200 ${
+                    isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:scale-[1.02]'
+                  }`}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+                <div className="flex justify-center space-x-6">
                   {socialLinks.map((link) => (
                     <a
                       key={link.name}
@@ -158,7 +139,10 @@ function Contact() {
                   ))}
                 </div>
               </div>
-            </div>
+              {submitStatus === 'success' && (
+                <p className="text-green-400 text-center">Message sent successfully!</p>
+              )}
+            </form>
           </div>
         </div>
       </div>
