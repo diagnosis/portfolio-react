@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { createCometAnimation } from '../utils/createCometAnimation';
-import { StudyProjectCard } from '../components/StudyProjectCard';
+import StudyProjectCard from '../components/StudyProjectCard';
 import fetchStudyProjectData from '../api/fetchStudyProjectData';
 
 export const Route = createFileRoute('/study-projects')({
