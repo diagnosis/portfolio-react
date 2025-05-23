@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { SkillCard } from '../SkillCard.jsx'
+import { SkillCard } from '../components/SkillCard.jsx'
 import { useEffect } from 'react'
 import { faJs, faPython, faJava, faSwift, faReact, faVuejs, faNodeJs, faAws, faDocker, faAndroid, faApple } from '@fortawesome/free-brands-svg-icons'
 import { faCode, faDatabase, faVial, faCloud, faMobile } from '@fortawesome/free-solid-svg-icons'
