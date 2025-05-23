@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { Menu, User, Code2, Briefcase, GraduationCap, Mail } from 'lucide-react'
+import { Menu, User, UserCircle, Code2, Code2Icon, Briefcase, BriefcaseIcon, GraduationCap, School2Icon, Mail, MailIcon } from 'lucide-react'
 import {Link, useRouter} from '@tanstack/react-router'
 
 export const Header = () => {
@@ -7,14 +7,14 @@ export const Header = () => {
     const router = useRouter()
     
     const linkStyle =
-        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-purple-300 hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
+        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-purple-300 hover:decoration-4 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
 
     const links = [
-        { href: '/about', label: 'About', icon: User },
-        { href: '/skills', label: 'Skills', icon: Code2 },
-        { href: '/projects', label: 'Projects', icon: Briefcase },
-        { href: '/study-projects', label: 'Study Projects', icon: GraduationCap },
-        { href: '/contact', label: 'Contact', icon: Mail },
+        { href: '/about', label: 'About', icon: User, filledIcon: UserCircle },
+        { href: '/skills', label: 'Skills', icon: Code2, filledIcon: Code2Icon },
+        { href: '/projects', label: 'Projects', icon: Briefcase, filledIcon: BriefcaseIcon },
+        { href: '/study-projects', label: 'Study Projects', icon: GraduationCap, filledIcon: School2Icon },
+        { href: '/contact', label: 'Contact', icon: Mail, filledIcon: MailIcon },
     ]
 
     const handleLinkClick = async (e) => {
@@ -29,6 +29,7 @@ export const Header = () => {
             link.classList.remove('underline')
             link.classList.remove('text-purple-300')
             link.classList.remove('decoration-purple-300')
+            link.classList.remove('decoration-4')
         })
         
         // Add active styles to clicked link
@@ -36,6 +37,7 @@ export const Header = () => {
             e.target.classList.add('underline')
             e.target.classList.add('text-purple-300')
             e.target.classList.add('decoration-purple-300')
+            e.target.classList.add('decoration-4')
         }
     }
 
@@ -47,6 +49,7 @@ export const Header = () => {
             activeLink.classList.add('underline')
             activeLink.classList.add('text-purple-300')
             activeLink.classList.add('decoration-purple-300')
+            activeLink.classList.add('decoration-4')
         }
     }, [])
 
@@ -83,7 +86,8 @@ export const Header = () => {
                 >
                     <ul className="mt-4 flex flex-col rounded-lg border border-violet-200 bg-transparent p-4 font-sans font-medium md:mt-0 md:flex-row md:space-x-4 md:border-0 md:p-0 transform transition-transform duration-200">
                         {links.map((link) => {
-                            const Icon = link.icon
+                            const isActive = router.state.location.pathname === link.href
+                            const Icon = isActive ? link.filledIcon : link.icon
                             return (
                                 <li key={link.href}>
                                     <Link
