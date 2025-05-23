@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { createCometAnimation } from '../utils/createCometAnimation';
 import StudyProjectCard from '../components/StudyProjectCard';
 import fetchStudyProjectData from '../api/fetchStudyProjectData';
+import {Swiper,SwiperSlide} from "swiper/react";
+
 
 export const Route = createFileRoute('/study-projects')({
   component: StudyProjects,
@@ -32,9 +34,16 @@ function StudyProjects() {
           Study Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+          <Swiper
+              spaceBetween={30}
+              slidesPerView={3}
+              onslidechange={() => console.log('slide change')}
+              onSwiper={(swiper) => console.log(swiper)}
+          >
           {projects.map((project) => (
-            <StudyProjectCard key={project.name} project={project} />
+           <SwiperSlide> <StudyProjectCard key={project.name} project={project} /></SwiperSlide>
           ))}
+          </Swiper>
         </div>
       </div>
     </section>
