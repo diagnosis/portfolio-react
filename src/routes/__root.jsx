@@ -12,7 +12,7 @@ function RootComponent() {
     return (
         <div className="flex flex-col min-h-screen fixed inset-0">
             <Header />
-            <main className="flex-1 overflow-y-auto pb-16 md:pb-0">
+            <main className="flex-1 overflow-y-auto scroll-container pb-16 md:pb-0">
                 <Outlet />
             </main>
             <div className="hidden md:block">
