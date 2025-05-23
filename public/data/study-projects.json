@@ -16,45 +16,19 @@
     ]
   },
   {
-    "name": "Weather Dashboard",
-    "category": "API Integration",
-    "image": "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-    "description": "A weather application that displays current conditions and forecasts using multiple weather APIs.",
-    "responsibilities": [
-      "Integrated multiple weather API services",
-      "Implemented geolocation features",
-      "Created interactive weather maps",
-      "Built caching system for API responses"
-    ],
-    "technologies": ["React", "OpenWeatherMap API", "Mapbox", "LocalStorage"],
-    "link": "https://github.com/yourusername/weather-dashboard",
-    "status": "In Progress",
-    "learningOutcomes": [
-      "Learned API integration best practices",
-      "Improved error handling techniques",
-      "Gained experience with mapping libraries",
-      "Enhanced understanding of browser storage"
-    ]
-  },
-  {
-    "name": "E-commerce Store",
-    "category": "Full Stack",
-    "image": "https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg",
-    "description": "A complete e-commerce solution with product management, cart functionality, and payment processing.",
-    "responsibilities": [
-      "Built shopping cart with local storage",
-      "Integrated Stripe payment processing",
-      "Implemented product search and filtering",
-      "Created admin dashboard for inventory management"
-    ],
-    "technologies": ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-    "link": "https://github.com/yourusername/ecommerce-store",
+    "name": "Word Chain Game",
+    "category": "Web Development",
+    "image": "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg",
+    "description": "An engaging word chain game where players connect words by matching the last letter of the previous word. Features real-time validation, score tracking, and multiplayer support using REST API.",
+    "technologies": ["React", "TanStack Router", "TanStack Query", "CSS", "REST API"],
+    "link": "https://github.com/diagnosis/word-chain-game",
+    "website": "https://word-chain-game-fun.netlify.app/",
     "status": "Completed",
     "learningOutcomes": [
-      "Mastered state management with Context API",
-      "Learned payment gateway integration",
-      "Improved database modeling skills",
-      "Enhanced security implementation knowledge"
+      "Implemented efficient state management with TanStack Query",
+      "Created responsive and intuitive game interface",
+      "Developed RESTful API integration",
+      "Built real-time word validation system"
     ]
   }
 ]
