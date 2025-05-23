@@ -29,8 +29,8 @@ export const Header = () => {
 
     const getActiveLinkStyle = (path) => {
         const isActive = router.state.location.pathname === path
-        return `block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0 ${
-            isActive ? 'text-purple-300 underline decoration-3 decoration-solid' : ''
+        return `block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-4 hover:decoration-solid underline-offset-8 transition-all duration-200 md:p-0 ${
+            isActive ? 'text-purple-300 underline decoration-4 decoration-solid underline-offset-8' : ''
         }`
     }
 
