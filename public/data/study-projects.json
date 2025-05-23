@@ -2,64 +2,49 @@
   {
     "name": "Portfolio with React",
     "category": "Web Development",
-    "image": "/images/projects/portfolio.jpg",
-    "description": "A full-stack task management application with real-time updates and collaborative features.",
-    "responsibilities": [
-      "Implemented user authentication and authorization",
-      "Created real-time task updates using WebSocket",
-      "Developed responsive UI with React and TailwindCSS",
-      "Integrated PostgreSQL database with Supabase"
-    ],
-    "technologies": ["React", "TailwindCSS", "Supabase", "WebSocket", "PostgreSQL"],
-    "link": "https://github.com/yourusername/task-manager",
+    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    "description": "A modern portfolio website built with React, TailwindCSS, and advanced animations. Features a responsive design, dynamic project showcases, and interactive UI elements.",
+    "technologies": ["React", "TailwindCSS", "Vite", "React Router"],
+    "link": "https://github.com/yourusername/portfolio-react",
+    "website": "https://your-portfolio.com",
     "status": "Completed",
     "learningOutcomes": [
-      "Gained experience with real-time data synchronization",
-      "Improved understanding of state management",
-      "Learned best practices for database design",
-      "Enhanced knowledge of authentication flows"
+      "Mastered React hooks and custom hooks",
+      "Implemented advanced TailwindCSS features",
+      "Created reusable component library",
+      "Optimized performance and accessibility"
     ]
   },
   {
     "name": "Weather Dashboard",
     "category": "API Integration",
-    "image": "/images/projects/weather-dashboard.webp",
-    "description": "A weather application that displays current conditions and forecasts using multiple weather APIs.",
-    "responsibilities": [
-      "Integrated multiple weather API services",
-      "Implemented geolocation features",
-      "Created interactive weather maps",
-      "Built caching system for API responses"
-    ],
-    "technologies": ["React", "OpenWeatherMap API", "Mapbox", "LocalStorage"],
+    "image": "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+    "description": "A comprehensive weather application featuring real-time weather data, interactive maps, and detailed forecasts. Integrates multiple weather APIs for accurate predictions.",
+    "technologies": ["React", "OpenWeatherMap API", "Mapbox", "TailwindCSS"],
     "link": "https://github.com/yourusername/weather-dashboard",
+    "website": "https://weather-dashboard-demo.com",
     "status": "In Progress",
     "learningOutcomes": [
-      "Learned API integration best practices",
-      "Improved error handling techniques",
-      "Gained experience with mapping libraries",
-      "Enhanced understanding of browser storage"
+      "Mastered API integration patterns",
+      "Implemented complex state management",
+      "Created interactive data visualizations",
+      "Developed error handling strategies"
     ]
   },
   {
     "name": "E-commerce Store",
     "category": "Full Stack",
-    "image": "/images/projects/ecommerce-store.webp",
-    "description": "A complete e-commerce solution with product management, cart functionality, and payment processing.",
-    "responsibilities": [
-      "Built shopping cart with local storage",
-      "Integrated Stripe payment processing",
-      "Implemented product search and filtering",
-      "Created admin dashboard for inventory management"
-    ],
-    "technologies": ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+    "image": "https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg",
+    "description": "A full-featured e-commerce platform with product management, shopping cart functionality, and secure payment processing. Includes admin dashboard and analytics.",
+    "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
     "link": "https://github.com/yourusername/ecommerce-store",
+    "website": "https://ecommerce-demo.com",
     "status": "Completed",
     "learningOutcomes": [
-      "Mastered state management with Context API",
-      "Learned payment gateway integration",
-      "Improved database modeling skills",
-      "Enhanced security implementation knowledge"
+      "Built secure payment integration",
+      "Implemented cart persistence",
+      "Created admin dashboard",
+      "Optimized database queries"
     ]
   }
 ]

@@ -31,7 +31,7 @@ function StudyProjects() {
         <h2 className="text-4xl md:text-5xl text-white text-center mb-12 font-heading animate-slide-up">
           Study Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
           {projects.map((project) => (
             <StudyProjectCard key={project.name} project={project} />
           ))}
