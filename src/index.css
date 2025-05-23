@@ -12,7 +12,7 @@
 
 /* Aurora Background */
 .aurora-bg {
-    @apply relative overflow-hidden bg-[#0B1026];
+    @apply relative overflow-y-auto bg-[#0B1026];
     background-image: url('/public/images/heart-of-universe.jpg');
     background-size: cover;
     background-position: center;
@@ -134,4 +134,8 @@
 * {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+body {
+    overflow: hidden;
 }
