@@ -5,7 +5,7 @@ function StudyProjectCard({ project }) {
     return (
         <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-teal-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative p-6 bg-black ring-1 ring-gray-900/5 rounded-lg leading-none flex flex-col">
+            <div className="relative p-6 bg-black/70 ring-1 ring-gray-900/5 rounded-lg leading-none flex flex-col">
                 <div className="h-64 overflow-hidden rounded-lg mb-6">
                     <img 
                         src={project.image} 
@@ -27,7 +27,7 @@ function StudyProjectCard({ project }) {
                     ))}
                 </div>
                 
-                <p className="text-indigo-100 mb-6 flex-grow">{project.description}</p>
+                <p className="text-indigo-100 mb-6 flex-grow text-sm/6">{project.description}</p>
                 
                 <div className="flex gap-4 mt-auto">
                     {project.link && (
