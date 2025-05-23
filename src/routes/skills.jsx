@@ -11,7 +11,7 @@ export const Route = createFileRoute('/skills')({
 
 function Skills() {
     useEffect(() => {
-        return createCometAnimation();
+        return createCometAnimation('cometCanvas');
     }, []);
 
     const skillCategories = [

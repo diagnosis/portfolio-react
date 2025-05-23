@@ -24,7 +24,7 @@ function Projects() {
 
   useEffect(() => {
     loadProjects()
-    return createCometAnimation();
+    return createCometAnimation('cometCanvas');
   }, []);
 
 

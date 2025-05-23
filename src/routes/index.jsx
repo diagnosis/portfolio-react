@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
     useEffect(() => {
-        return createCometAnimation();
+        return createCometAnimation('cometCanvas');
     }, []);
 
     return (

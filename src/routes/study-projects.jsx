@@ -22,7 +22,7 @@ function StudyProjects() {
 
   useEffect(() => {
     loadProjects();
-    return createCometAnimation();
+    return createCometAnimation('cometCanvas');
   }, []);
 
   return (

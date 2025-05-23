@@ -1,8 +1,8 @@
 [
   {
-    "name": "Task Manager",
+    "name": "Portfolio with React",
     "category": "Web Development",
-    "image": "/images/projects/task-manager.webp",
+    "image": "/images/projects/portfolio.jpg",
     "description": "A full-stack task management application with real-time updates and collaborative features.",
     "responsibilities": [
       "Implemented user authentication and authorization",

@@ -123,3 +123,6 @@
         opacity: 1;
     }
 }
+#cometCanvas {
+    z-index: 10;
+}
