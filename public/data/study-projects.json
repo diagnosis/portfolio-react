@@ -14,5 +14,47 @@
       "Created reusable component library",
       "Optimized performance and accessibility"
     ]
+  },
+  {
+    "name": "Weather Dashboard",
+    "category": "API Integration",
+    "image": "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+    "description": "A weather application that displays current conditions and forecasts using multiple weather APIs.",
+    "responsibilities": [
+      "Integrated multiple weather API services",
+      "Implemented geolocation features",
+      "Created interactive weather maps",
+      "Built caching system for API responses"
+    ],
+    "technologies": ["React", "OpenWeatherMap API", "Mapbox", "LocalStorage"],
+    "link": "https://github.com/yourusername/weather-dashboard",
+    "status": "In Progress",
+    "learningOutcomes": [
+      "Learned API integration best practices",
+      "Improved error handling techniques",
+      "Gained experience with mapping libraries",
+      "Enhanced understanding of browser storage"
+    ]
+  },
+  {
+    "name": "E-commerce Store",
+    "category": "Full Stack",
+    "image": "https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg",
+    "description": "A complete e-commerce solution with product management, cart functionality, and payment processing.",
+    "responsibilities": [
+      "Built shopping cart with local storage",
+      "Integrated Stripe payment processing",
+      "Implemented product search and filtering",
+      "Created admin dashboard for inventory management"
+    ],
+    "technologies": ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+    "link": "https://github.com/yourusername/ecommerce-store",
+    "status": "Completed",
+    "learningOutcomes": [
+      "Mastered state management with Context API",
+      "Learned payment gateway integration",
+      "Improved database modeling skills",
+      "Enhanced security implementation knowledge"
+    ]
   }
 ]
