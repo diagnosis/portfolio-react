@@ -10,9 +10,9 @@ export const Route = createRootRoute({
 
 function RootComponent() {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen max-w-full">
             <Header />
-            <main className="pt-16 pb-16 md:pb-32 h-[calc(100vh-64px)] overflow-y-auto">
+            <main className="pt-16 pb-16 md:pb-32 h-[calc(100vh-64px)] overflow-y-auto overflow-x-hidden">
                 <Outlet />
             </main>
             <div className="hidden md:block">
