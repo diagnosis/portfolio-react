@@ -10,9 +10,9 @@ export const Route = createRootRoute({
 
 function RootComponent() {
     return (
-        <div className="flex flex-col min-h-screen fixed inset-0">
+        <div className="min-h-screen">
             <Header />
-            <main className="flex-1 overflow-y-auto scroll-container pb-16 md:pb-0">
+            <main className="h-[calc(100vh-64px)] md:h-[calc(100vh-128px)]">
                 <Outlet />
             </main>
             <div className="hidden md:block">

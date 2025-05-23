@@ -20,11 +20,12 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 /* Aurora Background */
 .aurora-bg {
-    @apply relative overflow-y-auto;
+    @apply relative;
     perspective: 1000px;
 }
 
@@ -134,34 +135,4 @@ body {
 
 #cometCanvas {
     z-index: 10;
-}
-
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(139, 92, 246, 0.3);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(139, 92, 246, 0.5);
-}
-
-/* Enable smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom scroll container */
-.scroll-container {
-    scrollbar-gutter: stable;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
 }
