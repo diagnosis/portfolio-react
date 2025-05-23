@@ -12,7 +12,7 @@
 
 /* Aurora Background */
 .aurora-bg {
-    @apply relative min-h-screen overflow-hidden bg-[#0B1026];
+    @apply relative overflow-hidden bg-[#0B1026];
     background-image: url('/public/images/heart-of-universe.jpg');
     background-size: cover;
     background-position: center;
@@ -121,6 +121,17 @@
         opacity: 1;
     }
 }
+
 #cometCanvas {
     z-index: 10;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
