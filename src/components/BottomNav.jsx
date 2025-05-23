@@ -23,12 +23,16 @@ export function BottomNav() {
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`flex flex-col items-center ${
-                                isActive ? 'text-purple-300' : 'text-indigo-100'
+                            className={`flex flex-col items-center transition-all duration-200 ${
+                                isActive 
+                                    ? 'text-white font-bold scale-110' 
+                                    : 'text-indigo-200 hover:text-white'
                             }`}
                         >
-                            <Icon size={20} />
-                            <span className="text-xs mt-1">{item.label}</span>
+                            <Icon size={20} className={isActive ? 'stroke-2' : 'stroke-1'} />
+                            <span className={`text-xs mt-1 ${isActive ? 'font-bold' : ''}`}>
+                                {item.label}
+                            </span>
                         </Link>
                     );
                 })}

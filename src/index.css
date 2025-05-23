@@ -22,28 +22,14 @@ body {
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
-
-/* Aurora Background */
-.aurora-bg {
-    @apply relative;
-    perspective: 1000px;
+#root{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.aurora-bg::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 60% 20%, rgba(20, 184, 166, 0.3) 0%, transparent 40%),
-        radial-gradient(circle at 40% 40%, rgba(45, 212, 191, 0.3) 0%, transparent 40%),
-        radial-gradient(circle at 30% 60%, rgba(94, 234, 212, 0.3) 0%, transparent 40%);
-    animation: auroraFlow 15s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
-}
+
 
 .comet {
     position: absolute;
