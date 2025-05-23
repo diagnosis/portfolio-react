@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { createCometAnimation } from '../utils/createCometAnimation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faInstagram, faLinkedin, faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
@@ -48,17 +48,17 @@ function Contact() {
     {
       name: 'GitHub',
       icon: faGithub,
-      url: 'https://github.com/yourusername'
+      url: 'https://github.com/diagnosis'
     },
     {
       name: 'LinkedIn',
       icon: faLinkedin,
-      url: 'https://linkedin.com/in/yourusername'
+      url: 'https://www.linkedin.com/in/safa-demirkan-94663b280/'
     },
     {
-      name: 'Twitter',
-      icon: faTwitter,
-      url: 'https://twitter.com/yourusername'
+      name: 'Instagram',
+      icon: faInstagram,
+      url: 'https://www.instagram.com/serik_lee'
     }
   ];
 
