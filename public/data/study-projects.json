@@ -1,27 +1,11 @@
 [
   {
-    "name": "Word Chain Game",
-    "category": "Web Development",
-    "image": "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg",
-    "description": "An engaging word chain game where players connect words by matching the last letter of the previous word. Features real-time validation, score tracking, and multiplayer support using REST API.",
-    "technologies": ["React", "TanStack Router", "TanStack Query", "CSS", "REST API"],
-    "link": "https://github.com/yourusername/word-chain-game",
-    "website": "https://word-chain-game-fun.netlify.app/",
-    "status": "Completed",
-    "learningOutcomes": [
-      "Implemented efficient state management with TanStack Query",
-      "Created responsive and intuitive game interface",
-      "Developed RESTful API integration",
-      "Built real-time word validation system"
-    ]
-  },
-  {
     "name": "Portfolio with React",
     "category": "Web Development",
     "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
     "description": "A modern portfolio website built with React, TailwindCSS, and advanced animations. Features a responsive design, dynamic project showcases, and interactive UI elements.",
     "technologies": ["React", "TailwindCSS", "Vite", "React Router"],
-    "link": "https://github.com/yourusername/portfolio-react",
+    "link": "https://github.com/diagnosis/portfolio-react",
     "website": "https://your-portfolio.com",
     "status": "Completed",
     "learningOutcomes": [
@@ -32,35 +16,19 @@
     ]
   },
   {
-    "name": "Weather Dashboard",
-    "category": "API Integration",
-    "image": "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-    "description": "A comprehensive weather application featuring real-time weather data, interactive maps, and detailed forecasts. Integrates multiple weather APIs for accurate predictions.",
-    "technologies": ["React", "OpenWeatherMap API", "Mapbox", "TailwindCSS"],
-    "link": "https://github.com/yourusername/weather-dashboard",
-    "website": "https://weather-dashboard-demo.com",
-    "status": "In Progress",
-    "learningOutcomes": [
-      "Mastered API integration patterns",
-      "Implemented complex state management",
-      "Created interactive data visualizations",
-      "Developed error handling strategies"
-    ]
-  },
-  {
-    "name": "E-commerce Store",
-    "category": "Full Stack",
-    "image": "https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg",
-    "description": "A full-featured e-commerce platform with product management, shopping cart functionality, and secure payment processing. Includes admin dashboard and analytics.",
-    "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
-    "link": "https://github.com/yourusername/ecommerce-store",
-    "website": "https://ecommerce-demo.com",
+    "name": "Word Chain Game",
+    "category": "Web Development",
+    "image": "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg",
+    "description": "An engaging word chain game where players connect words by matching the last letter of the previous word. Features real-time validation, score tracking, and multiplayer support using REST API.",
+    "technologies": ["React", "TanStack Router", "TanStack Query", "CSS", "REST API"],
+    "link": "https://github.com/diagnosis/word-chain-game",
+    "website": "https://word-chain-game-fun.netlify.app/",
     "status": "Completed",
     "learningOutcomes": [
-      "Built secure payment integration",
-      "Implemented cart persistence",
-      "Created admin dashboard",
-      "Optimized database queries"
+      "Implemented efficient state management with TanStack Query",
+      "Created responsive and intuitive game interface",
+      "Developed RESTful API integration",
+      "Built real-time word validation system"
     ]
   }
 ]
