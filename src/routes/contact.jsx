@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { createCometAnimation } from '../utils/createCometAnimation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGithub, faInstagram, faLinkedin, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faInstagram, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
@@ -24,16 +24,26 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset status after 3 seconds
-    setTimeout(() => setSubmitStatus(null), 3000);
+    setSubmitStatus(null);
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData
+        }).toString()
+      });
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 3000);
+    }
   };
 
   const handleChange = (e) => {
@@ -68,7 +78,14 @@ function Contact() {
         <div className="max-w-2xl mx-auto relative z-10">
           <div className="bg-black/70 p-8 rounded-lg ring-1 ring-gray-900/5">
             <h2 className="text-4xl text-teal-100 mb-6 font-heading">Get in Touch</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-teal-100 mb-2">
                   Name
@@ -118,7 +135,7 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-teal-600 text-white font-medium hover:from-purple-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform transition-all duration-200 ${
+                  className={`w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-800 via-purple-700 to-fuchsia-600 text-white font-medium hover:from-blue-900 hover:to-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform transition-all duration-200 ${
                     isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:scale-[1.02]'
                   }`}
                 >
@@ -141,6 +158,9 @@ function Contact() {
               </div>
               {submitStatus === 'success' && (
                 <p className="text-green-400 text-center">Message sent successfully!</p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-red-400 text-center">Failed to send message. Please try again.</p>
               )}
             </form>
           </div>
