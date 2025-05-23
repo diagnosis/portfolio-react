@@ -7,7 +7,7 @@ export const Header = () => {
     const router = useRouter()
     
     const linkStyle =
-        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
+        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-purple-300 hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
 
     const links = [
         { href: '/about', label: 'About', icon: User },
@@ -23,13 +23,19 @@ export const Header = () => {
         // Wait for the next tick to ensure router state is updated
         await new Promise(resolve => setTimeout(resolve, 0))
         
-        // Find all links and remove underline
+        // Find all links and remove active styles
         const links = document.querySelectorAll('a')
-        links.forEach(link => link.classList.remove('underline'))
+        links.forEach(link => {
+            link.classList.remove('underline')
+            link.classList.remove('text-purple-300')
+            link.classList.remove('decoration-purple-300')
+        })
         
-        // Add underline to active link
+        // Add active styles to clicked link
         if (e.target.classList.contains('active')) {
             e.target.classList.add('underline')
+            e.target.classList.add('text-purple-300')
+            e.target.classList.add('decoration-purple-300')
         }
     }
 
@@ -39,6 +45,8 @@ export const Header = () => {
         const activeLink = document.querySelector(`a[href="${currentPath}"]`)
         if (activeLink) {
             activeLink.classList.add('underline')
+            activeLink.classList.add('text-purple-300')
+            activeLink.classList.add('decoration-purple-300')
         }
     }, [])
 
