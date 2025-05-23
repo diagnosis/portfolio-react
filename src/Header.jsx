@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, User, Code2, Briefcase, GraduationCap, Mail } from 'lucide-react'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouter } from '@tanstack/react-router'
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
     const buttonRef = useRef(null)
+    const router = useRouter()
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -26,8 +27,12 @@ export const Header = () => {
         }
     }, [isMenuOpen])
 
-    const linkStyle =
-        'block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0'
+    const getActiveLinkStyle = (path) => {
+        const isActive = router.state.location.pathname === path
+        return `block rounded-sm px-3 py-2 text-indigo-100 hover:text-purple-300 hover:underline hover:decoration-3 hover:decoration-solid underline-offset-4 transition-all duration-200 md:p-0 ${
+            isActive ? 'text-purple-300 underline decoration-3 decoration-solid' : ''
+        }`
+    }
 
     const links = [
         { href: '/about', label: 'About', icon: User },
@@ -77,7 +82,7 @@ export const Header = () => {
                                 <li key={link.href}>
                                     <Link 
                                         to={link.href} 
-                                        className={linkStyle + ' flex items-center justify-center gap-1.5'}
+                                        className={getActiveLinkStyle(link.href) + ' flex items-center justify-center gap-1.5'}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         <Icon size={18} />
