@@ -12,7 +12,7 @@ function RootComponent() {
     return (
         <div className="min-h-screen">
             <Header />
-            <main className="h-[calc(100vh-64px)] md:h-[calc(100vh-128px)]">
+            <main className="pt-16 pb-16 md:pb-32 h-[calc(100vh-64px)] overflow-y-auto">
                 <Outlet />
             </main>
             <div className="hidden md:block">
