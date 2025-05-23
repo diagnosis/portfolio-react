@@ -1,5 +1,5 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import { TanStackRouterDevtools } from '@tanstack/router-router-devtools';
 import { Header } from '../Header.jsx';
 import Footer from "../Footer.jsx";
 import { BottomNav } from '../components/BottomNav.jsx';
@@ -10,9 +10,9 @@ export const Route = createRootRoute({
 
 function RootComponent() {
     return (
-        <div className="min-h-screen max-w-full">
+        <div className="min-h-screen max-w-full flex flex-col">
             <Header />
-            <main className="pt-16 pb-16 md:pb-32 h-[calc(100vh-64px)] overflow-y-auto overflow-x-hidden">
+            <main className="flex-1 pt-16 pb-16 md:pb-32">
                 <Outlet />
             </main>
             <div className="hidden md:block">
