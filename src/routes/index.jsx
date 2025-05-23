@@ -24,17 +24,9 @@ function Index() {
                     <p className="font-sans text-xl sm:text-2xl md:text-3xl lg:text-4xl text-teal-100 mt-4 animate-slide-up">
                         Sr. Software Engineer in Test and Creative Developer
                     </p>
-                    <details className="mt-4 text-sm sm:text-base md:text-lg text-teal-100 animate-fade-in">
-                        <summary className="cursor-pointer hover:text-teal-300 transition-colors duration-200">
-                            Details
-                        </summary>
-                        <div className="bg-black/30 backdrop-blur-sm text-teal-100 p-4 rounded-lg mt-2 shadow-xl border border-teal-500/20">
-                            This is a secret.
-                        </div>
-                    </details>
                     <Link
                         to="/contact"
-                        className="block self-center w-fit mt-6 bg-gradient-to-r from-fuchsia-600 via-purple-700 to-blue-800 text-indigo-100 hover:text-purple-300 px-6 py-3 rounded-lg hover:scale-105 transition-all duration-200 animate-fade-in shadow-lg hover:shadow-xl"
+                        className="block self-center w-fit mt-6 bg-gradient-to-r from-blue-800 via-purple-700 to-fuchsia-600 text-indigo-100 hover:text-purple-300 px-6 py-3 rounded-lg hover:scale-105 transition-all duration-200 animate-fade-in shadow-lg hover:shadow-xl"
                     >
                         Contact Me
                     </Link>
