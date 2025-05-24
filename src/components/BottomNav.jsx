@@ -1,21 +1,9 @@
 import { Link, useRouter } from '@tanstack/react-router';
 import { Home, User, Code2, Briefcase, GraduationCap } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
 export function BottomNav() {
     const router = useRouter();
-    const [currentPath, setCurrentPath] = useState(router.state.location.pathname);
-
-    useEffect(() => {
-        const handleRouteChange = async () => {
-            // Wait for next tick to ensure router state is updated
-            await Promise.resolve();
-            setCurrentPath(router.state.location.pathname);
-        };
-
-        const unsubscribe = router.subscribe('onStateChange', handleRouteChange);
-        return () => unsubscribe();
-    }, [router]);
+    const currentPath = router.state.location.pathname;
 
     const navItems = [
         { path: '/', icon: Home, label: 'Home' },
@@ -37,21 +25,12 @@ export function BottomNav() {
                             to={item.path}
                             className={`flex flex-col items-center transition-all duration-200 ${
                                 isActive 
-                                    ? 'text-purple-900 font-bold scale-110' 
+                                    ? 'text-white font-bold scale-110' 
                                     : 'text-indigo-200 hover:text-white'
                             }`}
                         >
-                            <Icon 
-                                size={20} 
-                                className={`${isActive ? 'stroke-2' : 'stroke-1'} ${
-                                    isActive ? 'text-purple-900' : ''
-                                }`} 
-                            />
-                            <span className={`text-xs mt-1 ${
-                                isActive 
-                                    ? 'font-bold text-purple-900' 
-                                    : ''
-                            }`}>
+                            <Icon size={20} className={isActive ? 'stroke-2' : 'stroke-1'} />
+                            <span className={`text-xs mt-1 ${isActive ? 'font-bold' : ''}`}>
                                 {item.label}
                             </span>
                         </Link>
