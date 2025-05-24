@@ -4,7 +4,8 @@ import Footer from '../Footer.jsx';
 import { BottomNav } from '../components/BottomNav.jsx';
 import { useSwipeable } from 'react-swipeable';
 import { useState, useEffect, useCallback } from 'react';
-import { throttle } from 'lodash'; // Ensure lodash is installed: npm install lodash
+import { throttle } from 'lodash';
+import { motion, AnimatePresence } from 'framer-motion'; // For smooth transitions
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -35,17 +36,17 @@ function RootComponent() {
     const updateSwipeOffset = useCallback(
         throttle((offset) => {
             setSwipeOffset(offset);
-        }, 16), // ~60fps
+        }, 16, { leading: true, trailing: true }), // ~60fps
         []
     );
 
     const handlers = useSwipeable({
         onSwipedLeft: (e) => {
-            if (isVerticalScroll) return; // Skip if vertical scrolling
-            const swipeThreshold = screenWidth * 0.4;
+            if (isVerticalScroll) return;
+            const swipeThreshold = screenWidth * 0.35; // Reduced for responsiveness
             if (Math.abs(e.deltaX) > swipeThreshold) {
                 const currentIndex = routes.indexOf(router.state.location.pathname);
-                if (currentIndex === -1) return; // Skip unknown routes
+                if (currentIndex === -1) return;
                 if (currentIndex < routes.length - 1) {
                     router.navigate({ to: routes[currentIndex + 1] });
                 }
@@ -54,7 +55,7 @@ function RootComponent() {
         },
         onSwipedRight: (e) => {
             if (isVerticalScroll) return;
-            const swipeThreshold = screenWidth * 0.4;
+            const swipeThreshold = screenWidth * 0.35;
             if (Math.abs(e.deltaX) > swipeThreshold) {
                 const currentIndex = routes.indexOf(router.state.location.pathname);
                 if (currentIndex === -1) return;
@@ -66,17 +67,16 @@ function RootComponent() {
         },
         onSwiping: (e) => {
             if (isVerticalScroll) return;
-            // Only update offset if swipe is within bounds
-            if (Math.abs(e.deltaX) < screenWidth * 0.5) {
-                updateSwipeOffset(e.deltaX);
-            }
+            // Cap offset to prevent over-swipe
+            const cappedOffset = Math.max(-screenWidth * 0.4, Math.min(screenWidth * 0.4, e.deltaX));
+            updateSwipeOffset(cappedOffset);
         },
         onSwipeEnd: () => {
             setSwipeOffset(0);
             setIsVerticalScroll(false);
         },
         onTouchStartOrOnMouseDown: (e) => {
-            // Detect if gesture is more vertical than horizontal
+            // Detect vertical vs. horizontal gestures
             const touch = e.event.touches?.[0];
             if (touch) {
                 const startX = touch.clientX;
@@ -85,7 +85,7 @@ function RootComponent() {
                     const moveTouch = moveEvent.touches[0];
                     const deltaX = Math.abs(moveTouch.clientX - startX);
                     const deltaY = Math.abs(moveTouch.clientY - startY);
-                    if (deltaY > deltaX * 1.5) { // Vertical movement dominates
+                    if (deltaY > deltaX * 1.5) {
                         setIsVerticalScroll(true);
                     }
                     document.removeEventListener('touchmove', onMove);
@@ -93,26 +93,35 @@ function RootComponent() {
                 document.addEventListener('touchmove', onMove, { once: true });
             }
         },
-        preventScrollOnSwipe: false, // Allow vertical scroll
+        preventScrollOnSwipe: false,
         trackMouse: false,
         trackTouch: true,
-        delta: 15, // Increased for less sensitivity
+        delta: 20, // Increased for deliberate swipes
         preventDefaultTouchmoveEvent: false, // Allow pinch-to-zoom
     });
 
     return (
         <>
             <Header />
-            <div
-                {...handlers}
-                className="min-h-screen transition-transform duration-200 ease-out"
-                style={{
-                    transform: `translateX(${swipeOffset}px)`,
-                    willChange: 'transform', // GPU acceleration
-                    touchAction: 'auto', // Allow pinch-to-zoom and scroll
-                }}
-            >
-                <Outlet />
+            <div {...handlers} className="min-h-screen overflow-hidden">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={router.state.location.pathname}
+                        initial={{ x: swipeOffset > 0 ? screenWidth : -screenWidth, opacity: 0.5 }}
+                        animate={{ x: swipeOffset, opacity: 1 }}
+                        exit={{ x: swipeOffset > 0 ? -screenWidth : screenWidth, opacity: 0.5 }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
+                        style={{
+                            willChange: 'transform, opacity',
+                            position: 'absolute',
+                            width: '100%',
+                            minHeight: '100vh',
+                            touchAction: 'auto',
+                        }}
+                    >
+                        <Outlet />
+                    </motion.div>
+                </AnimatePresence>
             </div>
             <div className="hidden md:block">
                 <Footer />
