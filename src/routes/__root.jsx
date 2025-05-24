@@ -34,8 +34,8 @@ function RootComponent() {
             }
         };
 
-        router.subscribe('onStateChange', handleRouteChange);
-        return () => router.unsubscribe('onStateChange', handleRouteChange);
+        const unsubscribe = router.subscribe('onStateChange', handleRouteChange);
+        return () => unsubscribe();
     }, [router]);
 
     const handleResize = useCallback(
