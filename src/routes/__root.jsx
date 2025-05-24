@@ -5,6 +5,7 @@ import { BottomNav } from '../components/BottomNav.jsx';
 import { useSwipeable } from 'react-swipeable';
 import { useState, useEffect, useCallback } from 'react';
 import { throttle } from 'lodash';
+import { Spinner } from '../components/Spinner';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -99,7 +100,6 @@ function RootComponent() {
                 setSwipeVelocity(0);
             };
             
-            // Add a small delay to ensure smooth transition
             setTimeout(resetState, 50);
         },
         preventScrollOnSwipe: false,
@@ -136,6 +136,7 @@ function RootComponent() {
     return (
         <>
             <Header />
+            {router.state.status === 'pending' && <Spinner />}
             <div {...handlers} className="min-h-screen overflow-x-hidden">
                 <div
                     style={{
