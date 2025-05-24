@@ -7,7 +7,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { throttle } from 'lodash';
 import { Spinner } from '../components/Spinner';
 import { AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -25,34 +24,6 @@ function RootComponent() {
     const [lastTouchX, setLastTouchX] = useState(null);
     const [lastTouchTime, setLastTouchTime] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-
-    // Get current route title
-    const getPageTitle = () => {
-        const path = router.state.location.pathname;
-        const titles = {
-            '/': 'Home',
-            '/about': 'About Me',
-            '/skills': 'Technical Skills',
-            '/projects': 'Projects',
-            '/study-projects': 'Study Projects',
-            '/contact': 'Contact'
-        };
-        return `${titles[path] || 'Page Not Found'} | Safa Demirkan`;
-    };
-
-    // Get current route description
-    const getPageDescription = () => {
-        const path = router.state.location.pathname;
-        const descriptions = {
-            '/': 'Senior Software Engineer in Test with expertise in test automation and quality assurance. Explore my portfolio and professional experience.',
-            '/about': 'Learn more about my journey as a Software Engineer in Test, my expertise, and my passion for quality assurance.',
-            '/skills': 'Discover my technical skills in test automation, programming languages, and development tools.',
-            '/projects': 'View my professional projects and contributions in software testing and development.',
-            '/study-projects': 'Explore my personal study projects and continuous learning journey.',
-            '/contact': 'Get in touch with me for professional opportunities or collaborations.'
-        };
-        return descriptions[path] || 'Welcome to my portfolio website';
-    };
 
     useEffect(() => {
         const handleRouteChange = () => {
@@ -179,10 +150,6 @@ function RootComponent() {
 
     return (
         <>
-            <Helmet>
-                <title>{getPageTitle()}</title>
-                <meta name="description" content={getPageDescription()} />
-            </Helmet>
             <Header />
             <AnimatePresence>
                 {isLoading && <Spinner />}
