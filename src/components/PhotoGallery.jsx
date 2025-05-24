@@ -38,7 +38,6 @@ export function PhotoGallery() {
             ...prev,
             [id]: true
         }));
-        // Clear any error state when image loads successfully
         setErrors(prev => ({
             ...prev,
             [id]: false
@@ -54,23 +53,23 @@ export function PhotoGallery() {
 
     return (
         <>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
                 {photos.map((photo) => (
                     <div 
                         key={photo.id}
-                        className="relative group cursor-pointer overflow-hidden rounded-lg bg-gradient-to-br from-purple-900/50 to-black/50"
+                        className="relative group cursor-pointer overflow-hidden rounded-lg bg-gradient-to-br from-purple-900/50 to-black/50 border border-purple-500/20 shadow-lg hover:shadow-xl transition-all duration-300"
                         onClick={() => !errors[photo.id] && setSelectedPhoto(photo)}
                     >
-                        <div className={`aspect-w-16 aspect-h-9 ${!loadedImages[photo.id] ? 'animate-pulse' : ''}`}>
+                        <div className={`min-h-[200px] ${!loadedImages[photo.id] ? 'animate-pulse' : ''}`}>
                             {errors[photo.id] ? (
-                                <div className="flex items-center justify-center h-48 text-red-400">
+                                <div className="flex items-center justify-center h-full min-h-[200px] text-red-400">
                                     Failed to load image
                                 </div>
                             ) : (
                                 <img 
                                     src={photo.url} 
                                     alt={photo.alt}
-                                    className={`w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500 ${
+                                    className={`w-full h-[200px] object-cover transform group-hover:scale-110 transition-all duration-500 ${
                                         loadedImages[photo.id] ? 'opacity-100' : 'opacity-0'
                                     }`}
                                     onLoad={() => handleImageLoad(photo.id)}
@@ -78,8 +77,8 @@ export function PhotoGallery() {
                                 />
                             )}
                         </div>
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
-                            <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                            <p className="text-white text-lg font-medium px-4 text-center">
                                 {photo.title}
                             </p>
                         </div>
