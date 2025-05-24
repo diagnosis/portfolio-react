@@ -7,9 +7,13 @@ export function BottomNav() {
     const [currentPath, setCurrentPath] = useState(router.state.location.pathname);
 
     useEffect(() => {
-        const unsubscribe = router.subscribe('onStateChange', () => {
+        const handleRouteChange = async () => {
+            // Wait for next tick to ensure router state is updated
+            await Promise.resolve();
             setCurrentPath(router.state.location.pathname);
-        });
+        };
+
+        const unsubscribe = router.subscribe('onStateChange', handleRouteChange);
         return () => unsubscribe();
     }, [router]);
 
