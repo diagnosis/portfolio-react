@@ -18,6 +18,9 @@ function RootComponent() {
     const [isVerticalScroll, setIsVerticalScroll] = useState(false);
     const [touchStartX, setTouchStartX] = useState(null);
     const [touchStartY, setTouchStartY] = useState(null);
+    const [swipeVelocity, setSwipeVelocity] = useState(0);
+    const [lastTouchX, setLastTouchX] = useState(null);
+    const [lastTouchTime, setLastTouchTime] = useState(null);
 
     const handleResize = useCallback(
         throttle(() => setScreenWidth(window.innerWidth), 100),
@@ -43,18 +46,32 @@ function RootComponent() {
             if (touch) {
                 setTouchStartX(touch.clientX);
                 setTouchStartY(touch.clientY);
+                setLastTouchX(touch.clientX);
+                setLastTouchTime(Date.now());
                 setIsVerticalScroll(false);
+                setSwipeVelocity(0);
             }
         },
         onSwiping: (e) => {
             if (isVerticalScroll) return;
             
-            const maxOffset = screenWidth * 0.3;
+            const touch = e.event.touches?.[0];
+            if (touch && lastTouchX !== null && lastTouchTime !== null) {
+                const deltaX = touch.clientX - lastTouchX;
+                const deltaTime = Date.now() - lastTouchTime;
+                const velocity = deltaX / deltaTime;
+                
+                setSwipeVelocity(velocity);
+                setLastTouchX(touch.clientX);
+                setLastTouchTime(Date.now());
+            }
+            
+            const maxOffset = screenWidth * 0.2;
             const cappedOffset = Math.max(-maxOffset, Math.min(maxOffset, e.deltaX));
             updateSwipeOffset(cappedOffset);
         },
         onSwipedLeft: (e) => {
-            if (isVerticalScroll || Math.abs(e.deltaX) < 50) return;
+            if (isVerticalScroll || (Math.abs(e.deltaX) < 50 && Math.abs(swipeVelocity) < 0.5)) return;
 
             const currentIndex = routes.indexOf(router.state.location.pathname);
             if (currentIndex < routes.length - 1) {
@@ -63,7 +80,7 @@ function RootComponent() {
             setSwipeOffset(0);
         },
         onSwipedRight: (e) => {
-            if (isVerticalScroll || Math.abs(e.deltaX) < 50) return;
+            if (isVerticalScroll || (Math.abs(e.deltaX) < 50 && Math.abs(swipeVelocity) < 0.5)) return;
 
             const currentIndex = routes.indexOf(router.state.location.pathname);
             if (currentIndex > 0) {
@@ -72,10 +89,18 @@ function RootComponent() {
             setSwipeOffset(0);
         },
         onTouchEndOrOnMouseUp: () => {
-            setSwipeOffset(0);
-            setIsVerticalScroll(false);
-            setTouchStartX(null);
-            setTouchStartY(null);
+            const resetState = () => {
+                setSwipeOffset(0);
+                setIsVerticalScroll(false);
+                setTouchStartX(null);
+                setTouchStartY(null);
+                setLastTouchX(null);
+                setLastTouchTime(null);
+                setSwipeVelocity(0);
+            };
+            
+            // Add a small delay to ensure smooth transition
+            setTimeout(resetState, 50);
         },
         preventScrollOnSwipe: false,
         trackMouse: false,
@@ -93,7 +118,6 @@ function RootComponent() {
             const deltaX = Math.abs(touch.clientX - touchStartX);
             const deltaY = Math.abs(touch.clientY - touchStartY);
             
-            // If vertical movement is 1.2x greater than horizontal, treat as vertical scroll
             if (deltaY > deltaX * 1.2) {
                 setIsVerticalScroll(true);
             }
@@ -106,6 +130,7 @@ function RootComponent() {
     useEffect(() => {
         setSwipeOffset(0);
         setIsVerticalScroll(false);
+        setSwipeVelocity(0);
     }, [router.state.location.pathname]);
 
     return (
@@ -115,7 +140,7 @@ function RootComponent() {
                 <div
                     style={{
                         transform: `translateX(${swipeOffset}px)`,
-                        transition: swipeOffset ? 'none' : 'transform 0.3s ease-out',
+                        transition: swipeOffset ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         willChange: 'transform',
                         width: '100%',
                         minHeight: '100vh',
