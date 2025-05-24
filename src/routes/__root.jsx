@@ -5,7 +5,7 @@ import { BottomNav } from '../components/BottomNav.jsx';
 import { useSwipeable } from 'react-swipeable';
 import { useState, useEffect, useCallback } from 'react';
 import { throttle } from 'lodash';
-import { motion, AnimatePresence } from 'framer-motion'; // For smooth transitions
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -36,17 +36,22 @@ function RootComponent() {
     const updateSwipeOffset = useCallback(
         throttle((offset) => {
             setSwipeOffset(offset);
-        }, 16, { leading: true, trailing: true }), // ~60fps
+        }, 16, { leading: true, trailing: true }),
         []
     );
 
     const handlers = useSwipeable({
         onSwipedLeft: (e) => {
             if (isVerticalScroll) return;
-            const swipeThreshold = screenWidth * 0.35; // Reduced for responsiveness
+            const swipeThreshold = screenWidth * 0.35;
             if (Math.abs(e.deltaX) > swipeThreshold) {
-                const currentIndex = routes.indexOf(router.state.location.pathname);
-                if (currentIndex === -1) return;
+                const currentPath = router.state.location.pathname;
+                const currentIndex = routes.indexOf(currentPath);
+                console.log('Swiped Left:', { currentPath, currentIndex, deltaX: e.deltaX }); // Debug
+                if (currentIndex === -1) {
+                    console.warn('Unknown route:', currentPath);
+                    return;
+                }
                 if (currentIndex < routes.length - 1) {
                     router.navigate({ to: routes[currentIndex + 1] });
                 }
@@ -57,8 +62,13 @@ function RootComponent() {
             if (isVerticalScroll) return;
             const swipeThreshold = screenWidth * 0.35;
             if (Math.abs(e.deltaX) > swipeThreshold) {
-                const currentIndex = routes.indexOf(router.state.location.pathname);
-                if (currentIndex === -1) return;
+                const currentPath = router.state.location.pathname;
+                const currentIndex = routes.indexOf(currentPath);
+                console.log('Swiped Right:', { currentPath, currentIndex, deltaX: e.deltaX }); // Debug
+                if (currentIndex === -1) {
+                    console.warn('Unknown route:', currentPath);
+                    return;
+                }
                 if (currentIndex > 0) {
                     router.navigate({ to: routes[currentIndex - 1] });
                 }
@@ -67,16 +77,15 @@ function RootComponent() {
         },
         onSwiping: (e) => {
             if (isVerticalScroll) return;
-            // Cap offset to prevent over-swipe
             const cappedOffset = Math.max(-screenWidth * 0.4, Math.min(screenWidth * 0.4, e.deltaX));
             updateSwipeOffset(cappedOffset);
         },
         onSwipeEnd: () => {
+            console.log('Swipe Ended:', { swipeOffset, isVerticalScroll }); // Debug
             setSwipeOffset(0);
             setIsVerticalScroll(false);
         },
         onTouchStartOrOnMouseDown: (e) => {
-            // Detect vertical vs. horizontal gestures
             const touch = e.event.touches?.[0];
             if (touch) {
                 const startX = touch.clientX;
@@ -96,9 +105,16 @@ function RootComponent() {
         preventScrollOnSwipe: false,
         trackMouse: false,
         trackTouch: true,
-        delta: 20, // Increased for deliberate swipes
-        preventDefaultTouchmoveEvent: false, // Allow pinch-to-zoom
+        delta: 20,
+        preventDefaultTouchmoveEvent: false,
     });
+
+    // Reset swipeOffset on route change
+    useEffect(() => {
+        setSwipeOffset(0);
+        setIsVerticalScroll(false);
+        console.log('Route Changed:', router.state.location.pathname); // Debug
+    }, [router.state.location.pathname]);
 
     return (
         <>
