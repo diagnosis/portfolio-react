@@ -12,9 +12,17 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Allows access from network
     port: 5173,
-    historyApiFallback: true,
   },
   preview: {
-    historyApiFallback: true,
-  }
+    port: 5173,
+  },
+  base: '/',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 })
