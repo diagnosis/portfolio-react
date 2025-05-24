@@ -10,6 +10,8 @@ export default defineConfig({
     autoCodeSplitting: true,
   }), react(), tailwindcss()],
   server: {
+    host: '0.0.0.0', // Allows access from network
+    port: 5173,
     historyApiFallback: true,
   },
   preview: {
