@@ -27,7 +27,7 @@ function Contact() {
     setSubmitStatus(null);
 
     try {
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
@@ -35,10 +35,15 @@ function Contact() {
           ...formData
         }).toString()
       });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -79,13 +84,19 @@ function Contact() {
           <div className="bg-black/70 p-8 rounded-lg ring-1 ring-gray-900/5">
             <h2 className="text-4xl text-teal-100 mb-6 font-heading">Get in Touch</h2>
             <form 
-              name="contact" 
-              method="POST" 
+              name="contact"
+              method="POST"
               data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="space-y-6"
             >
               <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </p>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-teal-100 mb-2">
                   Name

@@ -6,8 +6,13 @@
     <title>Safa Demirkan</title>
   </head>
   <body style="margin: 0 auto; ">
-  <canvas id="cometCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
-  <div id="modal"></div>
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+    <canvas id="cometCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+    <div id="modal"></div>
     <div id="root"></div>
     <script type="module" src="/src/App.jsx"></script>
   </body>
