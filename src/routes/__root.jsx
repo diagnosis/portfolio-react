@@ -17,6 +17,7 @@ function RootComponent() {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [isVerticalScroll, setIsVerticalScroll] = useState(false);
     const [touchStartX, setTouchStartX] = useState(null);
+    const [touchStartY, setTouchStartY] = useState(null);
 
     const handleResize = useCallback(
         throttle(() => setScreenWidth(window.innerWidth), 100),
@@ -41,6 +42,8 @@ function RootComponent() {
             const touch = event.touches?.[0];
             if (touch) {
                 setTouchStartX(touch.clientX);
+                setTouchStartY(touch.clientY);
+                setIsVerticalScroll(false);
             }
         },
         onSwiping: (e) => {
@@ -72,8 +75,9 @@ function RootComponent() {
             setSwipeOffset(0);
             setIsVerticalScroll(false);
             setTouchStartX(null);
+            setTouchStartY(null);
         },
-        preventScrollOnSwipe: true,
+        preventScrollOnSwipe: false,
         trackMouse: false,
         trackTouch: true,
         delta: 10,
@@ -83,20 +87,21 @@ function RootComponent() {
 
     useEffect(() => {
         const handleTouchMove = (e) => {
-            if (!touchStartX) return;
+            if (!touchStartX || !touchStartY) return;
             
             const touch = e.touches[0];
             const deltaX = Math.abs(touch.clientX - touchStartX);
             const deltaY = Math.abs(touch.clientY - touchStartY);
             
-            if (deltaY > deltaX) {
+            // If vertical movement is 1.2x greater than horizontal, treat as vertical scroll
+            if (deltaY > deltaX * 1.2) {
                 setIsVerticalScroll(true);
             }
         };
 
         document.addEventListener('touchmove', handleTouchMove, { passive: true });
         return () => document.removeEventListener('touchmove', handleTouchMove);
-    }, [touchStartX]);
+    }, [touchStartX, touchStartY]);
 
     useEffect(() => {
         setSwipeOffset(0);
