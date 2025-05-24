@@ -1,9 +1,17 @@
 import { Link, useRouter } from '@tanstack/react-router';
 import { Home, User, Code2, Briefcase, GraduationCap } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function BottomNav() {
     const router = useRouter();
-    const currentPath = router.state.location.pathname;
+    const [currentPath, setCurrentPath] = useState(router.state.location.pathname);
+
+    useEffect(() => {
+        const unsubscribe = router.subscribe('onStateChange', () => {
+            setCurrentPath(router.state.location.pathname);
+        });
+        return () => unsubscribe();
+    }, [router]);
 
     const navItems = [
         { path: '/', icon: Home, label: 'Home' },
