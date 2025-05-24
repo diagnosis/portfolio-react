@@ -15,5 +15,8 @@
   ],
   "theme_color": "#9333EA",
   "background_color": "#0B1026",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Safa Demirkan's portfolio showcasing software engineering and test automation expertise"
 }
