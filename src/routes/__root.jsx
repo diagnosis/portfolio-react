@@ -5,7 +5,6 @@ import { BottomNav } from '../components/BottomNav.jsx';
 import { useSwipeable } from 'react-swipeable';
 import { useState, useEffect, useCallback } from 'react';
 import { throttle } from 'lodash';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -34,22 +33,20 @@ function RootComponent() {
 
     // Throttled swipe offset update
     const updateSwipeOffset = useCallback(
-        throttle((offset) => {
-            setSwipeOffset(offset);
-        }, 16, { leading: true, trailing: true }),
+        throttle((offset) => setSwipeOffset(offset), 16, { leading: true, trailing: true }),
         []
     );
 
     const handlers = useSwipeable({
         onSwipedLeft: (e) => {
             if (isVerticalScroll) return;
-            const swipeThreshold = screenWidth * 0.35;
+            const swipeThreshold = screenWidth * 0.3; // Reduced for responsiveness
             if (Math.abs(e.deltaX) > swipeThreshold) {
                 const currentPath = router.state.location.pathname;
                 const currentIndex = routes.indexOf(currentPath);
-                console.log('Swiped Left:', { currentPath, currentIndex, deltaX: e.deltaX }); // Debug
                 if (currentIndex === -1) {
-                    console.warn('Unknown route:', currentPath);
+                    console.warn('Unknown route, resetting to /:', currentPath);
+                    router.navigate({ to: '/' });
                     return;
                 }
                 if (currentIndex < routes.length - 1) {
@@ -60,13 +57,13 @@ function RootComponent() {
         },
         onSwipedRight: (e) => {
             if (isVerticalScroll) return;
-            const swipeThreshold = screenWidth * 0.35;
+            const swipeThreshold = screenWidth * 0.3;
             if (Math.abs(e.deltaX) > swipeThreshold) {
                 const currentPath = router.state.location.pathname;
                 const currentIndex = routes.indexOf(currentPath);
-                console.log('Swiped Right:', { currentPath, currentIndex, deltaX: e.deltaX }); // Debug
                 if (currentIndex === -1) {
-                    console.warn('Unknown route:', currentPath);
+                    console.warn('Unknown route, resetting to /:', currentPath);
+                    router.navigate({ to: '/' });
                     return;
                 }
                 if (currentIndex > 0) {
@@ -77,13 +74,20 @@ function RootComponent() {
         },
         onSwiping: (e) => {
             if (isVerticalScroll) return;
-            const cappedOffset = Math.max(-screenWidth * 0.4, Math.min(screenWidth * 0.4, e.deltaX));
+            const cappedOffset = Math.max(-screenWidth * 0.35, Math.min(screenWidth * 0.35, e.deltaX));
             updateSwipeOffset(cappedOffset);
+            // Disable child touch handlers during swipe
+            document.querySelectorAll('.interactive').forEach(el => {
+                el.style.pointerEvents = 'none';
+            });
         },
         onSwipeEnd: () => {
-            console.log('Swipe Ended:', { swipeOffset, isVerticalScroll }); // Debug
             setSwipeOffset(0);
             setIsVerticalScroll(false);
+            // Re-enable child touch handlers
+            document.querySelectorAll('.interactive').forEach(el => {
+                el.style.pointerEvents = 'auto';
+            });
         },
         onTouchStartOrOnMouseDown: (e) => {
             const touch = e.event.touches?.[0];
@@ -94,7 +98,7 @@ function RootComponent() {
                     const moveTouch = moveEvent.touches[0];
                     const deltaX = Math.abs(moveTouch.clientX - startX);
                     const deltaY = Math.abs(moveTouch.clientY - startY);
-                    if (deltaY > deltaX * 1.5) {
+                    if (deltaY > deltaX * 1.2) {
                         setIsVerticalScroll(true);
                     }
                     document.removeEventListener('touchmove', onMove);
@@ -105,39 +109,32 @@ function RootComponent() {
         preventScrollOnSwipe: false,
         trackMouse: false,
         trackTouch: true,
-        delta: 20,
+        delta: 30, // Increased for deliberate swipes
         preventDefaultTouchmoveEvent: false,
     });
 
-    // Reset swipeOffset on route change
+    // Reset state on route change
     useEffect(() => {
         setSwipeOffset(0);
         setIsVerticalScroll(false);
-        console.log('Route Changed:', router.state.location.pathname); // Debug
     }, [router.state.location.pathname]);
 
     return (
         <>
             <Header />
-            <div {...handlers} className="min-h-screen overflow-hidden">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={router.state.location.pathname}
-                        initial={{ x: swipeOffset > 0 ? screenWidth : -screenWidth, opacity: 0.5 }}
-                        animate={{ x: swipeOffset, opacity: 1 }}
-                        exit={{ x: swipeOffset > 0 ? -screenWidth : screenWidth, opacity: 0.5 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
-                        style={{
-                            willChange: 'transform, opacity',
-                            position: 'absolute',
-                            width: '100%',
-                            minHeight: '100vh',
-                            touchAction: 'auto',
-                        }}
-                    >
-                        <Outlet />
-                    </motion.div>
-                </AnimatePresence>
+            <div {...handlers} className="min-h-screen overflow-x-hidden">
+                <div
+                    style={{
+                        transform: `translateX(${swipeOffset}px)`,
+                        transition: swipeOffset ? 'none' : 'transform 0.2s ease-out',
+                        willChange: 'transform',
+                        width: '100%',
+                        minHeight: '100vh',
+                        WebkitOverflowScrolling: 'touch',
+                    }}
+                >
+                    <Outlet />
+                </div>
             </div>
             <div className="hidden md:block">
                 <Footer />
