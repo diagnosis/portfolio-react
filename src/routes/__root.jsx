@@ -154,14 +154,13 @@ function RootComponent() {
             <AnimatePresence>
                 {isLoading && <Spinner />}
             </AnimatePresence>
-            <div {...handlers} className="min-h-screen overflow-x-hidden">
+            <div {...handlers} className="screen overflow-x-hidden">
                 <div
                     style={{
                         transform: `translateX(${swipeOffset}px)`,
                         transition: swipeOffset ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         willChange: 'transform',
                         width: '100%',
-                        minHeight: '100vh',
                         WebkitOverflowScrolling: 'touch',
                     }}
                 >
