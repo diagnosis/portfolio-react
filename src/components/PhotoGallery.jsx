@@ -31,9 +31,22 @@ const photos = [
 export function PhotoGallery() {
     const [selectedPhoto, setSelectedPhoto] = useState(null);
     const [loadedImages, setLoadedImages] = useState({});
+    const [errors, setErrors] = useState({});
 
     const handleImageLoad = (id) => {
         setLoadedImages(prev => ({
+            ...prev,
+            [id]: true
+        }));
+        // Clear any error state when image loads successfully
+        setErrors(prev => ({
+            ...prev,
+            [id]: false
+        }));
+    };
+
+    const handleImageError = (id) => {
+        setErrors(prev => ({
             ...prev,
             [id]: true
         }));
@@ -45,21 +58,28 @@ export function PhotoGallery() {
                 {photos.map((photo) => (
                     <div 
                         key={photo.id}
-                        className="relative group cursor-pointer overflow-hidden rounded-lg bg-black/30"
-                        onClick={() => setSelectedPhoto(photo)}
+                        className="relative group cursor-pointer overflow-hidden rounded-lg bg-gradient-to-br from-purple-900/50 to-black/50"
+                        onClick={() => !errors[photo.id] && setSelectedPhoto(photo)}
                     >
-                        <div className={`aspect-w-16 aspect-h-9 ${!loadedImages[photo.id] ? 'animate-pulse bg-gray-700' : ''}`}>
-                            <img 
-                                src={photo.url} 
-                                alt={photo.alt}
-                                className={`w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500 ${
-                                    loadedImages[photo.id] ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                onLoad={() => handleImageLoad(photo.id)}
-                            />
+                        <div className={`aspect-w-16 aspect-h-9 ${!loadedImages[photo.id] ? 'animate-pulse' : ''}`}>
+                            {errors[photo.id] ? (
+                                <div className="flex items-center justify-center h-48 text-red-400">
+                                    Failed to load image
+                                </div>
+                            ) : (
+                                <img 
+                                    src={photo.url} 
+                                    alt={photo.alt}
+                                    className={`w-full h-48 object-cover transform group-hover:scale-110 transition-all duration-500 ${
+                                        loadedImages[photo.id] ? 'opacity-100' : 'opacity-0'
+                                    }`}
+                                    onLoad={() => handleImageLoad(photo.id)}
+                                    onError={() => handleImageError(photo.id)}
+                                />
+                            )}
                         </div>
                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
-                            <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
                                 {photo.title}
                             </p>
                         </div>
