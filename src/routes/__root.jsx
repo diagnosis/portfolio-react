@@ -6,6 +6,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useState, useEffect, useCallback } from 'react';
 import { throttle } from 'lodash';
 import { Spinner } from '../components/Spinner';
+import { AnimatePresence } from 'framer-motion';
 
 export const Route = createRootRoute({
     component: RootComponent,
@@ -22,6 +23,20 @@ function RootComponent() {
     const [swipeVelocity, setSwipeVelocity] = useState(0);
     const [lastTouchX, setLastTouchX] = useState(null);
     const [lastTouchTime, setLastTouchTime] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            if (router.state.status === 'pending') {
+                setIsLoading(true);
+            } else {
+                setIsLoading(false);
+            }
+        };
+
+        router.subscribe('onStateChange', handleRouteChange);
+        return () => router.unsubscribe('onStateChange', handleRouteChange);
+    }, [router]);
 
     const handleResize = useCallback(
         throttle(() => setScreenWidth(window.innerWidth), 100),
@@ -136,7 +151,9 @@ function RootComponent() {
     return (
         <>
             <Header />
-            {router.state.status === 'pending' && <Spinner />}
+            <AnimatePresence>
+                {isLoading && <Spinner />}
+            </AnimatePresence>
             <div {...handlers} className="min-h-screen overflow-x-hidden">
                 <div
                     style={{
